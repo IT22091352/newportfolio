@@ -1,7 +1,32 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
+  // Professional roles that will be animated
+  const roles = [
+    "Software Engineer",
+    "Web Developer",
+    "UI/UX Designer",
+    "Full Stack Engineer"
+  ];
+  
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(true);
+
+  // Role carousel effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(false);
+      setTimeout(() => {
+        setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+        setIsAnimating(true);
+      }, 500); // Wait for exit animation to complete
+    }, 3000); // Change every 3 seconds
+    
+    return () => clearInterval(interval);
+  }, [roles.length]);
+
   return (
     <section id="home" className="min-h-screen flex items-center bg-gradient-to-b from-dark-900 to-dark-800 text-white pb-16 pt-32">
       <div className="container mx-auto px-6">
@@ -26,6 +51,24 @@ const Hero = () => {
             >
               Hi, I'm <span className="bg-gradient-to-r from-primary-400 to-secondary-500 text-transparent bg-clip-text">Chathuka Dilakshana</span>
             </motion.h1>
+            
+            <div className="flex items-center h-12 overflow-hidden mb-8">
+              <span className="text-lg md:text-xl text-gray-300 mr-2">And I'm a</span>
+              <AnimatePresence mode="wait">
+                {isAnimating && (
+                  <motion.span 
+                    key={roles[currentRoleIndex]}
+                    className="text-lg md:text-xl bg-gradient-to-r from-primary-400 to-secondary-500 text-transparent bg-clip-text font-bold"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {roles[currentRoleIndex]}
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </div>
             
             <motion.p 
               className="text-lg text-gray-300 mb-8 max-w-xl"
