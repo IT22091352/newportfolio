@@ -26,7 +26,7 @@ const About = () => {
               <div className="absolute -inset-4 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl blur opacity-20"></div>
               <div className="relative overflow-hidden rounded-2xl shadow-custom-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                  src="/assets/pictures/about.jpg"
                   alt="Professional portrait" 
                   className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
                 />
