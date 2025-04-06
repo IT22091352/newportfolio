@@ -102,9 +102,9 @@ const Hero = () => {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full blur-xl opacity-75"></div>
               <div className="relative bg-dark-800 rounded-full p-8">
                 <img 
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                  src="./assets/pictures/profilePIC.jpg"
                   alt="Developer illustration" 
-                  className="w-full max-w-md mx-auto drop-shadow-xl"
+                  className="w-full mx-auto drop-shadow-xl boarder-radius-10px-4 rounded-full border-2 border-primary-500/20"
                 />
               </div>
             </div>
