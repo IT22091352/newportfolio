@@ -33,7 +33,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-secondary-500 text-transparent bg-clip-text"
         >
-          DevPortfolio
+          Chathuka Dilakshana
         </motion.div>
         
         {/* Desktop Menu */}

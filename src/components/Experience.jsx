@@ -2,46 +2,55 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const Experience = () => {
-  const [activeTab, setActiveTab] = useState('work');
+  const [activeTab, setActiveTab] = useState('education');
   
   const experiences = {
     work: [
       {
-        title: "Senior Frontend Developer",
-        company: "Tech Innovators Inc.",
-        duration: "2021 - Present",
-        description: "Led development of multiple React-based web applications. Implemented modern frontend architecture with performance optimizations. Mentored junior developers and conducted code reviews.",
-        technologies: ["React", "Redux", "TypeScript", "GraphQL", "AWS"]
-      },
-      {
-        title: "Frontend Developer",
-        company: "Digital Solutions LLC",
-        duration: "2019 - 2021",
-        description: "Developed responsive web applications and implemented state management using Redux. Collaborated with UX/UI designers to create intuitive user experiences.",
-        technologies: ["React", "JavaScript", "CSS3/SCSS", "REST APIs"]
-      },
-      {
-        title: "Web Developer",
-        company: "Creative Agency Co.",
-        duration: "2017 - 2019",
-        description: "Built client websites using modern JavaScript frameworks. Worked closely with the design team to implement pixel-perfect interfaces.",
-        technologies: ["JavaScript", "HTML5", "CSS3", "jQuery", "Bootstrap"]
+        title: "Software Engineer Intern",
+        company: "Apps Technologies",
+        duration: "January 2025 - Present",
+        description: "Working on developing web and mobile applications using modern technologies such as React, Node.js, and Java.",
+        technologies: ["React", "Node.js", "Java", "MongoDB", "Express"]
       }
     ],
     education: [
       {
-        title: "Master's in Computer Science",
-        company: "Stanford University",
-        duration: "2015 - 2017",
-        description: "Specialized in web technologies and distributed systems. Completed thesis on optimizing React applications for performance.",
-        technologies: ["Algorithms", "Web Development", "Distributed Systems"]
+        title: "Bachelor of Information Technology",
+        company: "Sri Lanka Institute of Information Technology (SLIIT)",
+        duration: "Present",
+        description: "Focusing on software engineering, web development, and mobile application development.",
+        technologies: ["Software Engineering", "Web Development", "Mobile Development"]
       },
       {
-        title: "Bachelor's in Computer Science",
-        company: "Carnegie Mellon University",
-        duration: "2011 - 2015",
-        description: "Graduated with honors. Participated in multiple hackathons and coding competitions.",
-        technologies: ["Data Structures", "Programming Fundamentals", "Software Engineering"]
+        title: "Diploma in English",
+        company: "Britishway English Academy",
+        duration: "2022 - Present",
+        description: "Enhancing English language skills for professional communication.",
+        technologies: ["Professional Communication", "Business English", "Academic Writing"]
+      },
+      {
+        title: "A/L Maths Stream",
+        company: "ST/ALOYSIUS COLLEGE",
+        duration: "2022",
+        description: "Completed advanced level education with focus on mathematics and sciences.",
+        technologies: ["Mathematics", "Physics", "Chemistry"]
+      }
+    ],
+    certifications: [
+      {
+        title: "Python for Beginners",
+        company: "University of Moratuwa",
+        duration: "2023",
+        description: "Fundamentals of Python programming language and its applications.",
+        technologies: ["Python", "Programming Fundamentals", "Data Structures"]
+      },
+      {
+        title: "Web Design for Beginners",
+        company: "University of Moratuwa",
+        duration: "2023",
+        description: "Introduction to web design concepts, HTML, CSS, and JavaScript.",
+        technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"]
       }
     ]
   };
@@ -56,11 +65,21 @@ const Experience = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Experience & Education
+          Education & Certifications
         </motion.h2>
         
         <div className="flex justify-center mb-12">
           <div className="inline-flex p-1 bg-gray-100 dark:bg-dark-700 rounded-lg">
+            <button
+              onClick={() => setActiveTab('education')}
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+                activeTab === 'education'
+                  ? 'bg-primary-600 text-white shadow-md'
+                  : 'text-dark-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600'
+              }`}
+            >
+              Education
+            </button>
             <button
               onClick={() => setActiveTab('work')}
               className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
@@ -72,14 +91,14 @@ const Experience = () => {
               Work Experience
             </button>
             <button
-              onClick={() => setActiveTab('education')}
+              onClick={() => setActiveTab('certifications')}
               className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
-                activeTab === 'education'
+                activeTab === 'certifications'
                   ? 'bg-primary-600 text-white shadow-md'
                   : 'text-dark-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600'
               }`}
             >
-              Education
+              Certifications
             </button>
           </div>
         </div>
@@ -114,7 +133,7 @@ const Experience = () => {
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
                         <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998a12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
                       </svg>
                     )}
                   </div>

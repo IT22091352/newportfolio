@@ -6,57 +6,57 @@ const Projects = () => {
   
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with product management, cart functionality, payment processing, and order tracking.',
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Redux', 'Stripe'],
-      demoLink: 'https://demo-ecommerce.com',
-      githubLink: 'https://github.com/yourusername/ecommerce',
+      title: 'Mobile Gaming App',
+      description: 'Developed an interactive Android gaming app using Kotlin, focusing on delivering smooth gameplay and a modern UI with view-binding.',
+      image: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80',
+      technologies: ['Android Studio', 'Kotlin', 'UI/UX Design', 'View Binding'],
+      demoLink: '#',
+      githubLink: 'https://github.com/chathuka-dilakshana',
+      category: 'mobile'
+    },
+    {
+      title: 'Tourist Management System',
+      description: 'Built a comprehensive tourist management system using the MERN stack with features for bookings, reviews, and personalized itineraries.',
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'REST API'],
+      demoLink: '#',
+      githubLink: 'https://github.com/chathuka-dilakshana',
       category: 'fullstack'
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80',
-      technologies: ['React', 'TypeScript', 'Firebase', 'Tailwind CSS', 'Context API'],
-      demoLink: 'https://task-app-demo.com',
-      githubLink: 'https://github.com/yourusername/task-app',
+      title: 'Review Analysis Project',
+      description: 'Implemented a machine learning project for sentiment analysis of product reviews using text preprocessing, CountVectorizer, TF-IDF, and various ML models.',
+      image: 'https://images.unsplash.com/photo-1589561253898-768105ca91a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      technologies: ['Python', 'Jupyter Notebook', 'Machine Learning', 'NLP', 'Data Analysis'],
+      demoLink: '#',
+      githubLink: 'https://github.com/chathuka-dilakshana',
+      category: 'data'
+    },
+    {
+      title: 'Portfolio Website',
+      description: 'A responsive portfolio website built with React.js and Next.js, showcasing projects, skills, and experience with optimized performance and seamless navigation.',
+      image: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      technologies: ['React.js', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Responsive Design'],
+      demoLink: 'https://chathukadilakshanaportfolio.me',
+      githubLink: 'https://github.com/chathuka-dilakshana',
       category: 'frontend'
     },
     {
-      title: 'Weather Dashboard',
-      description: 'An interactive weather application that displays current conditions, forecasts, and historical weather data with beautiful data visualizations.',
-      image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      technologies: ['React', 'Weather API', 'Chart.js', 'CSS Modules', 'Axios'],
-      demoLink: 'https://weather-app-demo.com',
-      githubLink: 'https://github.com/yourusername/weather-app',
-      category: 'frontend'
+      title: 'Smart Note App',
+      description: 'A user-friendly mobile application for creating, organizing, and managing notes, designed to boost productivity and simplify information management.',
+      image: 'https://images.unsplash.com/photo-1595675024853-0f3ec9098ac7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      technologies: ['Android Studio', 'Kotlin', 'Room Database', 'MVVM Architecture', 'Material Design'],
+      demoLink: '#',
+      githubLink: 'https://github.com/chathuka-dilakshana',
+      category: 'mobile'
     },
     {
-      title: 'Inventory Management System',
-      description: 'A complete inventory management solution for small businesses with barcode scanning, stock alerts, and sales analytics.',
-      image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Express', 'JWT', 'Sequelize'],
-      demoLink: 'https://inventory-demo.com',
-      githubLink: 'https://github.com/yourusername/inventory-system',
-      category: 'fullstack'
-    },
-    {
-      title: 'Fitness Tracking API',
-      description: 'A robust API for fitness applications that tracks workouts, nutrition, and progress with detailed analytics and recommendations.',
-      image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      technologies: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Swagger', 'Jest'],
-      demoLink: 'https://fitness-api-docs.com',
-      githubLink: 'https://github.com/yourusername/fitness-api',
-      category: 'backend'
-    },
-    {
-      title: 'Real Estate Listings Portal',
-      description: 'A comprehensive real estate platform with property listings, advanced search, virtual tours, and agent communication tools.',
-      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80',
-      technologies: ['React', 'Next.js', 'Node.js', 'MongoDB', 'Google Maps API', 'AWS S3'],
-      demoLink: 'https://realestate-demo.com',
-      githubLink: 'https://github.com/yourusername/realestate-portal',
+      title: 'Hotel Reservation Website',
+      description: 'A dynamic website designed to streamline hotel booking processes, offering features for browsing, selecting, and reserving accommodations with ease.',
+      image: 'https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80',
+      technologies: ['PHP', 'Java', 'MySQL', 'JavaScript', 'HTML/CSS', 'Bootstrap'],
+      demoLink: '#',
+      githubLink: 'https://github.com/chathuka-dilakshana',
       category: 'fullstack'
     }
   ];
@@ -85,7 +85,7 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {['all', 'frontend', 'backend', 'fullstack'].map((category) => (
+          {['all', 'frontend', 'fullstack', 'mobile', 'data'].map((category) => (
             <button
               key={category}
               onClick={() => setFilter(category)}
@@ -173,7 +173,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <a 
-            href="https://github.com/yourusername" 
+            href="https://github.com/chathuka-dilakshana" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center text-primary-400 hover:text-primary-300 font-medium"

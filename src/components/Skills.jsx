@@ -3,36 +3,36 @@ import { motion } from 'framer-motion';
 const Skills = () => {
   const skills = [
     { 
-      category: 'Frontend',
+      category: 'Programming Languages',
       items: [
-        { name: 'JavaScript (ES6+)', level: 95 },
-        { name: 'React.js', level: 90 },
-        { name: 'TypeScript', level: 85 },
-        { name: 'HTML5/CSS3', level: 90 },
-        { name: 'Tailwind CSS', level: 88 },
-        { name: 'Next.js', level: 82 },
+        { name: 'Java', level: 90 },
+        { name: 'JavaScript', level: 85 },
+        { name: 'Python', level: 80 },
+        { name: 'HTML/CSS', level: 90 },
+        { name: 'Kotlin', level: 75 },
+        { name: 'PHP', level: 70 },
       ]
     },
     {
-      category: 'Backend',
+      category: 'Frameworks & Tools',
       items: [
-        { name: 'Node.js', level: 88 },
-        { name: 'Express.js', level: 85 },
-        { name: 'GraphQL', level: 80 },
-        { name: 'RESTful APIs', level: 92 },
-        { name: 'MongoDB', level: 85 },
-        { name: 'PostgreSQL', level: 80 },
+        { name: 'React.js', level: 85 },
+        { name: 'Node.js', level: 80 },
+        { name: 'Express.js', level: 80 },
+        { name: 'MongoDB', level: 75 },
+        { name: 'Spring Boot', level: 70 },
+        { name: 'Tailwind CSS', level: 85 },
       ]
     },
     {
-      category: 'DevOps & Tools',
+      category: 'Other Skills',
       items: [
-        { name: 'Git/GitHub', level: 90 },
-        { name: 'Docker', level: 78 },
-        { name: 'AWS', level: 75 },
-        { name: 'CI/CD', level: 80 },
-        { name: 'Jest/Testing', level: 85 },
-        { name: 'Agile/Scrum', level: 88 },
+        { name: 'Git/GitHub', level: 85 },
+        { name: 'UI/UX Design', level: 75 },
+        { name: 'REST APIs', level: 80 },
+        { name: 'Android Studio', level: 70 },
+        { name: 'Figma', level: 75 },
+        { name: 'Problem Solving', level: 85 },
       ]
     }
   ];
