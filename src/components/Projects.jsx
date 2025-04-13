@@ -62,7 +62,7 @@ const Projects = () => {
     {
       title: 'Online Book Hub',
       description: 'BookHub, a web application designed to enhance the way we discover and explore books. ',
-      image: 'https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80',
+      image: 'https://media.istockphoto.com/id/1218656325/photo/laptop-with-online-library-realistic-3d-rendering.jpg?s=612x612&w=0&k=20&c=R9yd2DvnzDfmJvPEbpTznc89XwX7SD3k8kAeUU3UnMU=',
       technologies: ['React', 'JavaScripts', 'MongoDB', 'NodeJs', 'HTML/CSS', 'Bootstrap', 'ExpressJs'],
       demoLink: 'https://www.linkedin.com/posts/chathuka-dilakshana-006315284_reactjs-webdevelopment-googlebooksapi-activity-7280644380707713026-68y3?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEUaFsYBrXMHT91mODYsNiwla3z6-ffHEXk',
       githubLink: 'https://github.com/IT22091352/library_management_system.git',
