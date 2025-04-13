@@ -10,15 +10,15 @@ const Experience = () => {
         title: "Software Engineer Intern",
         company: "Apps Technologies",
         duration: "January 2025 - Present",
-        description: "Working on developing web and mobile applications using modern technologies such as React, Node.js, and Java.",
-        technologies: ["React", "Node.js", "Java", "MongoDB", "Express"]
+        description: "Working on developing web applications using modern technologies such as PHP Laravel and MERN stacks.",
+        technologies: ["React", "Node.js", "Java", "MongoDB", "Express", "PHP", "Laravel"]
       }
     ],
     education: [
       {
         title: "Bachelor of Information Technology",
         company: "Sri Lanka Institute of Information Technology (SLIIT)",
-        duration: "Present",
+        duration: "2022 - Present",
         description: "Focusing on software engineering, web development, and mobile application development.",
         technologies: ["Software Engineering", "Web Development", "Mobile Development"]
       },
