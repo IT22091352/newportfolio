@@ -10,8 +10,8 @@ const Projects = () => {
       description: 'Developed an interactive Android gaming app using Kotlin, focusing on delivering smooth gameplay and a modern UI with view-binding.',
       image: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80',
       technologies: ['Android Studio', 'Kotlin', 'UI/UX Design', 'View Binding'],
-      demoLink: '#',
-      githubLink: 'https://github.com/chathuka-dilakshana',
+      demoLink: 'https://www.linkedin.com/posts/chathuka-dilakshana-006315284_mobileapp-androiddev-kotlin-activity-7206671989325848576-pWmX?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEUaFsYBrXMHT91mODYsNiwla3z6-ffHEXk',
+      githubLink: 'https://github.com/IT22091352/Mobile-Gaming-App.git',
       category: 'mobile'
     },
     {
@@ -20,7 +20,7 @@ const Projects = () => {
       image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80',
       technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'REST API'],
       demoLink: '#',
-      githubLink: 'https://github.com/chathuka-dilakshana',
+      githubLink: 'https://github.com/IT22091352/Tourist-Management-System.git',
       category: 'fullstack'
     },
     {
@@ -28,8 +28,8 @@ const Projects = () => {
       description: 'Implemented a machine learning project for sentiment analysis of product reviews using text preprocessing, CountVectorizer, TF-IDF, and various ML models.',
       image: 'https://images.unsplash.com/photo-1589561253898-768105ca91a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
       technologies: ['Python', 'Jupyter Notebook', 'Machine Learning', 'NLP', 'Data Analysis'],
-      demoLink: '#',
-      githubLink: 'https://github.com/chathuka-dilakshana',
+      demoLink: 'https://www.linkedin.com/posts/chathuka-dilakshana-006315284_machinelearning-datascience-reviewanalysis-activity-7221264760644755456-a9hD?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEUaFsYBrXMHT91mODYsNiwla3z6-ffHEXk',
+      githubLink: 'https://github.com/IT22091352/review_analysis_project.git',
       category: 'data'
     },
     {
@@ -38,7 +38,7 @@ const Projects = () => {
       image: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
       technologies: ['React.js', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Responsive Design'],
       demoLink: 'https://chathukadilakshanaportfolio.me',
-      githubLink: 'https://github.com/chathuka-dilakshana',
+      githubLink: 'https://github.com/IT22091352/Chathuka-Dilakshana-Portfolio.git',
       category: 'frontend'
     },
     {
@@ -46,8 +46,8 @@ const Projects = () => {
       description: 'A user-friendly mobile application for creating, organizing, and managing notes, designed to boost productivity and simplify information management.',
       image: 'https://images.unsplash.com/photo-1595675024853-0f3ec9098ac7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
       technologies: ['Android Studio', 'Kotlin', 'Room Database', 'MVVM Architecture', 'Material Design'],
-      demoLink: '#',
-      githubLink: 'https://github.com/chathuka-dilakshana',
+      demoLink: 'https://www.linkedin.com/posts/chathuka-dilakshana-006315284_androiddev-kotlin-crudapp-activity-7206717409410396163-mL9a?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEUaFsYBrXMHT91mODYsNiwla3z6-ffHEXk',
+      githubLink: 'https://github.com/IT22091352/Smart-Note-MAD-app.git',
       category: 'mobile'
     },
     {
@@ -56,7 +56,16 @@ const Projects = () => {
       image: 'https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80',
       technologies: ['PHP', 'Java', 'MySQL', 'JavaScript', 'HTML/CSS', 'Bootstrap'],
       demoLink: '#',
-      githubLink: 'https://github.com/chathuka-dilakshana',
+      githubLink: 'https://github.com/IT22091352/IT22091352-IT22091352-Hotel-Reservation-Website.git',
+      category: 'fullstack'
+    },
+    {
+      title: 'Online Book Hub',
+      description: 'BookHub, a web application designed to enhance the way we discover and explore books. ',
+      image: 'https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80',
+      technologies: ['React', 'JavaScripts', 'MongoDB', 'NodeJs', 'HTML/CSS', 'Bootstrap', 'ExpressJs'],
+      demoLink: 'https://www.linkedin.com/posts/chathuka-dilakshana-006315284_reactjs-webdevelopment-googlebooksapi-activity-7280644380707713026-68y3?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEUaFsYBrXMHT91mODYsNiwla3z6-ffHEXk',
+      githubLink: 'https://github.com/IT22091352/library_management_system.git',
       category: 'fullstack'
     }
   ];
@@ -173,7 +182,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <a 
-            href="https://github.com/chathuka-dilakshana" 
+            href="https://github.com/IT22091352" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center text-primary-400 hover:text-primary-300 font-medium"
