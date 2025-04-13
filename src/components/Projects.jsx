@@ -19,7 +19,7 @@ const Projects = () => {
       description: 'Built a comprehensive tourist management system using the MERN stack with features for bookings, reviews, and personalized itineraries.',
       image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80',
       technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'REST API'],
-      demoLink: '#',
+      demoLink: '/notfound',
       githubLink: 'https://github.com/IT22091352/Tourist-Management-System.git',
       category: 'fullstack'
     },
@@ -35,7 +35,7 @@ const Projects = () => {
     {
       title: 'Portfolio Website',
       description: 'A responsive portfolio website built with React.js and Next.js, showcasing projects, skills, and experience with optimized performance and seamless navigation.',
-      image: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      image: '/assets/pictures/portfolio.png',
       technologies: ['React.js', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Responsive Design'],
       demoLink: 'https://chathukadilakshanaportfolio.me',
       githubLink: 'https://github.com/IT22091352/Chathuka-Dilakshana-Portfolio.git',
@@ -55,7 +55,7 @@ const Projects = () => {
       description: 'A dynamic website designed to streamline hotel booking processes, offering features for browsing, selecting, and reserving accommodations with ease.',
       image: 'https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80',
       technologies: ['PHP', 'Java', 'MySQL', 'JavaScript', 'HTML/CSS', 'Bootstrap'],
-      demoLink: '#',
+      demoLink: '/notfound',
       githubLink: 'https://github.com/IT22091352/IT22091352-IT22091352-Hotel-Reservation-Website.git',
       category: 'fullstack'
     },

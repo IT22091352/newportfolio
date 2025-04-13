@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,6 +12,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ParticlesBackground from './components/ParticlesBackground';
+import NotFound from './components/NotFound';
 
 function App() {
   // Create a mock resume URL for the About component
@@ -40,28 +42,38 @@ function App() {
 
   return (
     <ThemeProvider>
-      <AnimatePresence>
-        <div className="relative dark:bg-dark-900">
-          <ParticlesBackground />
-          <Navbar />
-          
-          <motion.main
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Hero />
-            <About />
-            <Skills />
-            <Experience />
-            <Projects />
-            {/* <Blog /> */}
-            <Contact />
-          </motion.main>
-          
-          <Footer />
-        </div>
-      </AnimatePresence>
+      <Router>
+        <AnimatePresence>
+          <div className="relative dark:bg-dark-900">
+            <ParticlesBackground />
+            
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Navbar />
+                  <motion.main
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Hero />
+                    <About />
+                    <Skills />
+                    <Experience />
+                    <Projects />
+                    {/* <Blog /> */}
+                    <Contact />
+                  </motion.main>
+                  <Footer />
+                </>
+              } />
+              
+              <Route path="/notfound" element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        </AnimatePresence>
+      </Router>
     </ThemeProvider>
   );
 }
