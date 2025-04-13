@@ -38,7 +38,7 @@ const Navbar = () => {
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          {['Home', 'About', 'Skills', 'Experience', 'Projects', 'Blog', 'Contact'].map((item) => (
+          {['Home', 'About', 'Skills', 'Experience', 'Projects',  'Contact'].map((item) => (
             <motion.div
               key={item}
               whileHover={{ y: -2 }}

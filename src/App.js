@@ -7,7 +7,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
-import Blog from './components/Blog';
+// import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ParticlesBackground from './components/ParticlesBackground';
@@ -55,7 +55,7 @@ function App() {
             <Skills />
             <Experience />
             <Projects />
-            <Blog />
+            {/* <Blog /> */}
             <Contact />
           </motion.main>
           
