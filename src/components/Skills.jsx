@@ -14,7 +14,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'Frameworks & Tools',
+      category: 'Frameworks',
       items: [
         { name: 'React.js', level: 85 },
         { name: 'Node.js', level: 80 },
@@ -27,11 +27,11 @@ const Skills = () => {
     {
       category: 'Other Skills',
       items: [
-        { name: 'Git/GitHub', level: 85 },
-        { name: 'UI/UX Design', level: 75 },
-        { name: 'REST APIs', level: 80 },
-        { name: 'Android Studio', level: 70 },
-        { name: 'Figma', level: 75 },
+        { name: 'Creativity', level: 85 },
+        { name: 'Adaptabilit', level: 75 },
+        { name: 'communication', level: 80 },
+        { name: 'Resilience', level: 70 },
+        { name: 'Teamwork', level: 75 },
         { name: 'Problem Solving', level: 85 },
       ]
     }
@@ -117,9 +117,9 @@ const Skills = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-xl font-bold mb-4">Other Technologies I Work With</h3>
+          <h3 className="text-xl font-bold mb-4">Other Technologies & tools I Work With</h3>
           <div className="flex flex-wrap justify-center gap-3">
-            {['Redux', 'Webpack', 'Sass', 'Firebase', 'Material UI', 'Figma', 'Vercel', 'GitHub Actions', 'Netlify', 'Storybook'].map((tech, index) => (
+            {['AI/ML', 'Visual Studio Code', 'UI/UX Design', 'Android Studio', 'REST APIs', 'Material UI', 'Figma', 'Vercel', 'Git/GitHub', 'Netlify', 'MySQL'].map((tech, index) => (
               <span 
                 key={index}
                 className="px-4 py-2 bg-white border border-gray-200 rounded-full text-dark-700 text-sm shadow-sm hover:shadow-md transition-shadow"
