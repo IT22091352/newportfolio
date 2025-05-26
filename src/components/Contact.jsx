@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 
@@ -17,6 +17,12 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const form = useRef();
 
+  // Initialize EmailJS when component mounts
+  useEffect(() => {
+    // Initialize EmailJS with the public key
+    emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'PHyffhd15Hhjs-GBC');
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -26,15 +32,26 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Debug log to check if environment variables are loaded
-    console.log("Service ID:", process.env.REACT_APP_EMAILJS_SERVICE_ID);
-    console.log("Template ID:", process.env.REACT_APP_EMAILJS_TEMPLATE_ID);
-    console.log("Public Key:", process.env.REACT_APP_EMAILJS_PUBLIC_KEY ? "exists" : "missing");
-    
-    // Check if environment variables are defined, use hardcoded values as fallback
-    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID ;
-    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID ;
-    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY ;
+    // Get environment variables with fallback values
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_0mdxqvn';
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_fw50ewp';
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'PHyffhd15Hhjs-GBC';
+
+    // Debug logs
+    console.log("Service ID:", serviceId);
+    console.log("Template ID:", templateId);
+    console.log("Public Key:", publicKey ? "exists" : "missing");
+
+    // Validate required fields
+    if (!serviceId || !templateId || !publicKey) {
+      setFormStatus({
+        submitted: true,
+        success: false,
+        message: 'Email configuration is missing. Please try again later or contact me directly via email.'
+      });
+      setLoading(false);
+      return;
+    }
 
     emailjs.sendForm(
       serviceId,
@@ -52,12 +69,17 @@ const Contact = () => {
         setFormData({ user_name: '', user_email: '', subject: '', message: '' });
       })
       .catch((error) => {
-        // More robust error handling
         console.error('FAILED...', error);
         let errorMessage = 'Failed to send message. Please try again or contact me directly via email.';
         
         if (error && error.text) {
-          errorMessage += ` Error: ${error.text}`;
+          if (error.text.includes('public key')) {
+            errorMessage = 'Email service configuration error. Please contact me directly via email or WhatsApp.';
+          } else if (error.text.includes('template')) {
+            errorMessage = 'Email template error. Please contact me directly via email or WhatsApp.';
+          } else {
+            errorMessage += ` Error: ${error.text}`;
+          }
         }
         
         setFormStatus({
