@@ -145,7 +145,7 @@ const Hero = () => {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full blur-xl opacity-75"></div>
               <div className="relative bg-dark-800 rounded-full p-8">
                 <img 
-                  src="./assets/pictures/profilePIC.png"
+                  src="./assets/pictures/profilePIC1.png"
                   alt="Developer illustration" 
                   className="w-full mx-auto drop-shadow-xl boarder-radius-10px-4 rounded-full border-2 border-primary-500/20"
                 />
