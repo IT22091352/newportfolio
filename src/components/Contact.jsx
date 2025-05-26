@@ -32,10 +32,10 @@ const Contact = () => {
     console.log("Public Key:", process.env.REACT_APP_EMAILJS_PUBLIC_KEY ? "exists" : "missing");
     
     // Check if environment variables are defined, use hardcoded values as fallback
-    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_68fd9i5';
-    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_co24h0p';
-    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'wBuwOGjV3u8lXTdrV';
-    
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID ;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID ;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY ;
+
     emailjs.sendForm(
       serviceId,
       templateId,
