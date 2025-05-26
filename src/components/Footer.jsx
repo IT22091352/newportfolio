@@ -26,7 +26,7 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <a 
-              href="https://github.com/it22091352" 
+              href="https://github.com/IT22091352" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-blue-400"
@@ -36,7 +36,7 @@ const Footer = () => {
               </svg>
             </a>
             <a 
-              href="www.linkedin.com/in/chathuka-dilakshana-006315284" 
+              href="https://www.linkedin.com/in/chathuka-dilakshana-006315284" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-blue-400"
