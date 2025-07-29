@@ -19,8 +19,8 @@ const Contact = () => {
 
   // Initialize EmailJS when component mounts
   useEffect(() => {
-    // Initialize EmailJS with the public key
-    emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'PHyffhd15Hhjs-GBC');
+    // Initialize EmailJS with the correct public key
+    emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'WDi_TnqYxE9Z6xN21');
   }, []);
 
   const handleChange = (e) => {
@@ -32,10 +32,10 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Get environment variables with fallback values
-    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_0mdxqvn';
-    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_fw50ewp';
-    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'PHyffhd15Hhjs-GBC';
+    // Use the correct, confirmed EmailJS values
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_q5pa85a';
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_enn53jm';
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'WDi_TnqYxE9Z6xN21';
 
     // Debug logs
     console.log("Service ID:", serviceId);
@@ -73,10 +73,18 @@ const Contact = () => {
         let errorMessage = 'Failed to send message. Please try again or contact me directly via email.';
         
         if (error && error.text) {
-          if (error.text.includes('public key')) {
+          if (error.text.includes('insufficient authentication scopes') || error.text.includes('authentication scopes')) {
+            errorMessage = 'Email service needs reconnection. Please try again later or contact me directly via email/WhatsApp.';
+          } else if (error.text.includes('Invalid grant') || error.text.includes('Gmail_API')) {
+            errorMessage = 'Email service connection issue. Please try again later or contact me directly via email/WhatsApp.';
+          } else if (error.text.includes('public key')) {
             errorMessage = 'Email service configuration error. Please contact me directly via email or WhatsApp.';
           } else if (error.text.includes('template')) {
             errorMessage = 'Email template error. Please contact me directly via email or WhatsApp.';
+          } else if (error.text.includes('Account not found')) {
+            errorMessage = 'EmailJS account or service not found. Please check your EmailJS configuration.';
+          } else if (error.text.includes('404')) {
+            errorMessage = 'EmailJS resource not found (404). Please check your Service ID, Template ID, and Public Key.';
           } else {
             errorMessage += ` Error: ${error.text}`;
           }
@@ -281,6 +289,8 @@ const Contact = () => {
                   ></textarea>
                 </div>
                 
+                <input type="hidden" name="to_email" value="dilukumudu33@gmail.com" />
+
                 <motion.button
                   type="submit"
                   disabled={loading}
