@@ -53,7 +53,7 @@ const About = () => {
               <div className="space-y-3">
                 <h4 className="text-xl font-semibold text-dark-900">Highlights:</h4>
                 <ul className="list-disc pl-5 space-y-2">
-                  <li className="text-dark-700">3rd Year Undergraduate at SLIIT</li>
+                  <li className="text-dark-700">4rd Year Undergraduate at SLIIT</li>
                   <li className="text-dark-700">Specialized in Information Technology</li>
                   <li className="text-dark-700">Worked as Intern Software Engineer at Apps Technologies</li>
                   <li className="text-dark-700">Completed multiple certifications including Python and Web Design from University of Moratuwa</li>
