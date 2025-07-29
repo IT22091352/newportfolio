@@ -62,7 +62,7 @@ const About = () => {
             </div>
             
             <motion.a
-              href="./assets/projects/certificate/ChathukaCVSE.pdf"
+              href="./assets/projects/certificate/Chathuka Dilakshana CV.pdf"
               download
               className="btn-primary mt-8 inline-flex items-center"
               whileHover={{ scale: 1.05 }}
