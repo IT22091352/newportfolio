@@ -209,7 +209,7 @@ const Contact = () => {
             
             <div className="mt-10 bg-gray-50 dark:bg-dark-600 p-6 rounded-lg border border-gray-100 dark:border-dark-500">
               <h4 className="font-semibold text-dark-900 dark:text-white mb-3">Current Availability</h4>
-              <p className="text-dark-700 dark:text-gray-300">I'm currently pursuing my degree in Information Technology and completing an internship. While I'm not actively seeking new opportunities at the moment, I'm always open to connecting and discussing future possibilities!</p>
+              <p className="text-dark-700 dark:text-gray-300">I am currently pursuing a degree in Information Technology and actively seeking new opportunities. I’m always open to connecting, collaborating, and discussing future possibilities. Feel free to get in touch!</p>
             </div>
           </motion.div>
           
