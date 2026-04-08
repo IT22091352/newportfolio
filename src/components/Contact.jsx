@@ -220,15 +220,9 @@ const Contact = () => {
               </div>
             </div>
             
-<<<<<<< HEAD
             <div className="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-800">
               <h4 className="mb-3 font-semibold text-slate-900 dark:text-white">Current Availability</h4>
-              <p className="text-sm leading-7 text-slate-700 dark:text-slate-300 sm:text-base">I'm currently pursuing my degree in Information Technology and completing an internship. While I'm not actively seeking new opportunities at the moment, I'm always open to connecting and discussing future possibilities.</p>
-=======
-            <div className="mt-10 bg-gray-50 dark:bg-dark-600 p-6 rounded-lg border border-gray-100 dark:border-dark-500">
-              <h4 className="font-semibold text-dark-900 dark:text-white mb-3">Current Availability</h4>
-              <p className="text-dark-700 dark:text-gray-300">I am currently pursuing a degree in Information Technology and actively seeking new opportunities. I’m always open to connecting, collaborating, and discussing future possibilities. Feel free to get in touch!</p>
->>>>>>> df26a83a2d4381a3447eb44889600814680519a5
+              <p className="text-sm leading-7 text-slate-700 dark:text-slate-300 sm:text-base">I am currently pursuing a degree in Information Technology and actively seeking new opportunities. I am always open to connecting, collaborating, and discussing future possibilities. Feel free to get in touch.</p>
             </div>
           </motion.div>
           
