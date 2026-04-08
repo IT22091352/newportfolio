@@ -158,7 +158,7 @@ const Hero = () => {
             <div className="glass-panel animate-float p-4">
               <div className="overflow-hidden rounded-2xl border border-white/20 bg-white/5">
                 <img
-                  src="/assets/pictures/profilePIC1.png"
+                  src="/assets/pictures/profilePIC1.JPG"
                   alt="Chathuka Dilakshana"
                   className="h-[520px] w-full object-cover object-top transition-transform duration-500 hover:scale-105"
                 />
