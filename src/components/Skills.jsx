@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { popIn, revealUp, sectionStagger } from '../utils/motionVariants';
 
 const Skills = () => {
   const skills = [
@@ -37,66 +38,62 @@ const Skills = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
-    <section id="skills" className="py-24 bg-gray-50">
-      <div className="container mx-auto px-6">
+    <section id="skills" className="section-padding bg-slate-100/70 dark:bg-slate-900/45">
+      <div className="container">
         <motion.h2 
           className="section-heading"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
           Technical Expertise
         </motion.h2>
+        <motion.p
+          className="section-subheading"
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          A balanced stack across frontend, backend, and product execution skills.
+        </motion.p>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-16">
+        <motion.div
+          className="mt-10 grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3"
+          variants={sectionStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {skills.map((skillGroup, groupIndex) => (
             <motion.div
               key={groupIndex}
-              variants={containerVariants}
+              variants={popIn}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="bg-white rounded-xl shadow-custom p-8 border border-gray-100"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              className="glass-panel rounded-2xl p-5 sm:p-6"
             >
               <motion.h3 
-                className="text-xl font-bold mb-6 text-center text-dark-900 pb-2 border-b border-gray-200"
-                variants={itemVariants}
+                className="card-title mb-6 border-b border-slate-200 pb-3 text-center text-slate-900 dark:border-slate-700 dark:text-slate-100"
+                variants={revealUp}
               >
                 {skillGroup.category}
               </motion.h3>
               
               <div className="space-y-6">
                 {skillGroup.items.map((skill, index) => (
-                  <motion.div key={index} variants={itemVariants}>
+                  <motion.div key={index} variants={revealUp}>
                     <div className="flex justify-between mb-1">
-                      <span className="text-dark-800 font-medium">{skill.name}</span>
-                      <span className="text-primary-600 font-medium">{skill.level}%</span>
+                      <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 sm:text-base">{skill.name}</span>
+                      <span className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 sm:text-base">{skill.level}%</span>
                     </div>
                     
-                    <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+                    <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
                       <motion.div 
-                        className="h-2.5 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500"
+                        className="h-2.5 rounded-full bg-gradient-to-r from-cyan-700 to-sky-500"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
@@ -108,24 +105,25 @@ const Skills = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
         
         <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="mt-12 text-center md:mt-14"
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
-          <h3 className="text-xl font-bold mb-4">Other Technologies & tools I Work With</h3>
+          <h3 className="card-title mb-4 text-slate-900 dark:text-slate-100">Other Technologies and Tools</h3>
           <div className="flex flex-wrap justify-center gap-3">
             {['AI/ML', 'Visual Studio Code', 'UI/UX Design', 'Android Studio', 'REST APIs', 'Material UI', 'Figma', 'Vercel', 'Git/GitHub', 'Netlify', 'MySQL'].map((tech, index) => (
-              <span 
+              <motion.span 
                 key={index}
-                className="px-4 py-2 bg-white border border-gray-200 rounded-full text-dark-700 text-sm shadow-sm hover:shadow-md transition-shadow"
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs text-slate-700 shadow-sm transition-shadow hover:shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 sm:text-sm"
+                variants={revealUp}
               >
                 {tech}
-              </span>
+              </motion.span>
             ))}
           </div>
         </motion.div>

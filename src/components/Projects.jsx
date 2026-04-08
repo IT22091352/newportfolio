@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { popIn, revealUp, sectionStagger } from '../utils/motionVariants';
 
 const Projects = () => {
   const [filter, setFilter] = useState('all');
@@ -75,33 +76,42 @@ const Projects = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section id="projects" className="py-24 bg-dark-900 text-white">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="section-padding bg-slate-900 text-white">
+      <div className="container">
         <motion.h2 
           className="section-heading text-white"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
           Featured Projects
         </motion.h2>
+        <motion.p
+          className="section-subheading text-slate-300"
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          Selected builds where performance, visual detail, and usability come together.
+        </motion.p>
         
         <motion.div 
-          className="flex justify-center mb-12 flex-wrap gap-2"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="mb-10 mt-10 flex flex-wrap justify-center gap-2"
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
           {['all', 'frontend', 'fullstack', 'mobile', 'data'].map((category) => (
             <button
               key={category}
               onClick={() => setFilter(category)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-all sm:px-5 sm:text-sm ${
                 filter === category
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-dark-800 text-gray-300 hover:bg-dark-700'
+                  ? 'bg-cyan-600 text-white'
+                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
               }`}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -109,35 +119,38 @@ const Projects = () => {
           ))}
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+          variants={sectionStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.16 }}
+        >
           {filteredProjects.map((project, index) => (
             <motion.div
               key={index}
-              className="bg-dark-800 rounded-xl overflow-hidden shadow-custom border border-dark-700 h-full flex flex-col"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/95 shadow-custom"
+              variants={popIn}
               whileHover={{ y: -10 }}
             >
-              <div className="relative overflow-hidden h-64">
+              <div className="relative h-60 overflow-hidden sm:h-64">
                 <img 
                   src={project.image} 
                   alt={project.title} 
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent opacity-60"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-60"></div>
               </div>
               
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-bold mb-3 text-white">{project.title}</h3>
-                <p className="text-gray-300 mb-4 flex-1">{project.description}</p>
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 className="mb-3 text-lg font-semibold text-white sm:text-xl">{project.title}</h3>
+                <p className="mb-4 flex-1 text-sm leading-7 text-slate-300 sm:text-base">{project.description}</p>
                 
                 <div className="flex flex-wrap mb-6">
                   {project.technologies.map((tech, i) => (
                     <span 
                       key={i} 
-                      className="text-xs mr-2 mb-2 px-3 py-1 rounded-full bg-primary-900/30 text-primary-400 border border-primary-800/50"
+                      className="mb-2 mr-2 rounded-full border border-cyan-800/50 bg-cyan-900/30 px-3 py-1 text-xs text-cyan-300"
                     >
                       {tech}
                     </span>
@@ -149,7 +162,7 @@ const Projects = () => {
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-primary-600 hover:bg-primary-700 text-center text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                    className="flex-1 rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-cyan-600 sm:text-base"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                   >
@@ -160,7 +173,7 @@ const Projects = () => {
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center bg-dark-700 hover:bg-dark-600 px-4 py-2 rounded-lg transition-colors"
+                    className="flex items-center justify-center rounded-lg bg-slate-700 px-4 py-2 transition-colors hover:bg-slate-600"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                   >
@@ -172,20 +185,20 @@ const Projects = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
         
         <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="mt-12 text-center md:mt-16"
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
           <a 
             href="https://github.com/IT22091352" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center text-primary-400 hover:text-primary-300 font-medium"
+            className="inline-flex items-center font-semibold text-cyan-400 hover:text-cyan-300"
           >
             View more projects on GitHub
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

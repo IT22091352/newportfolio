@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { revealUp, sectionStagger } from '../utils/motionVariants';
 
 const Experience = () => {
   const [activeTab, setActiveTab] = useState('education');
@@ -56,46 +57,55 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-24 bg-gray-50 dark:bg-dark-800 dark:text-white">
-      <div className="container mx-auto px-6">
+    <section id="experience" className="section-padding bg-slate-50/60 dark:bg-slate-900/40 dark:text-white">
+      <div className="container">
         <motion.h2 
-          className="section-heading dark:text-white"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="section-heading"
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
           Education & Certifications
         </motion.h2>
+        <motion.p
+          className="section-subheading"
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          Milestones in academic growth, certifications, and practical engineering experience.
+        </motion.p>
         
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex p-1 bg-gray-100 dark:bg-dark-700 rounded-lg">
+        <div className="mb-10 mt-10 flex justify-center md:mb-12">
+          <div className="inline-flex rounded-full bg-slate-100 p-1 dark:bg-slate-800">
             <button
               onClick={() => setActiveTab('education')}
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+              className={`rounded-full px-4 py-2 text-xs font-semibold transition-all sm:px-6 sm:text-sm ${
                 activeTab === 'education'
-                  ? 'bg-primary-600 text-white shadow-md'
-                  : 'text-dark-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600'
+                  ? 'bg-slate-900 text-white shadow-md dark:bg-slate-100 dark:text-slate-900'
+                  : 'text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700'
               }`}
             >
               Education
             </button>
             <button
               onClick={() => setActiveTab('work')}
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+              className={`rounded-full px-4 py-2 text-xs font-semibold transition-all sm:px-6 sm:text-sm ${
                 activeTab === 'work'
-                  ? 'bg-primary-600 text-white shadow-md'
-                  : 'text-dark-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600'
+                  ? 'bg-slate-900 text-white shadow-md dark:bg-slate-100 dark:text-slate-900'
+                  : 'text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700'
               }`}
             >
               Work Experience
             </button>
             <button
               onClick={() => setActiveTab('certifications')}
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+              className={`rounded-full px-4 py-2 text-xs font-semibold transition-all sm:px-6 sm:text-sm ${
                 activeTab === 'certifications'
-                  ? 'bg-primary-600 text-white shadow-md'
-                  : 'text-dark-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600'
+                  ? 'bg-slate-900 text-white shadow-md dark:bg-slate-100 dark:text-slate-900'
+                  : 'text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700'
               }`}
             >
               Certifications
@@ -103,10 +113,16 @@ const Experience = () => {
           </div>
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
+        <div className="mx-auto max-w-4xl">
+          <motion.div
+            className="relative"
+            variants={sectionStagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gray-200 dark:bg-dark-600"></div>
+            <div className="absolute left-0 h-full w-1 bg-slate-200 dark:bg-slate-700 md:left-1/2 md:-translate-x-1/2"></div>
             
             {/* Timeline items */}
             {experiences[activeTab].map((item, index) => (
@@ -115,16 +131,13 @@ const Experience = () => {
                 className={`relative mb-16 md:mb-8 ${
                   index % 2 === 0 ? 'md:pr-12 md:text-right md:ml-auto md:mr-1/2' : 'md:pl-12 md:ml-1/2'
                 }`}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={revealUp}
               >
                 {/* Timeline dot */}
                 <div className={`absolute left-0 md:left-1/2 top-0 transform -translate-y-1/3 ${
                   index % 2 === 0 ? 'md:translate-x-0' : 'md:-translate-x-full'
                 }`}>
-                  <div className="w-12 h-12 bg-primary-600 rounded-full border-4 border-white dark:border-dark-800 flex items-center justify-center">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full border-4 border-white bg-cyan-700 dark:border-slate-900">
                     {activeTab === 'work' ? (
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -139,21 +152,21 @@ const Experience = () => {
                   </div>
                 </div>
                 
-                <div className={`p-6 bg-white dark:bg-dark-700 rounded-lg shadow-custom ${
+                <div className={`glass-panel rounded-2xl p-5 sm:p-6 ${
                   index % 2 === 0 ? 'ml-12 md:ml-0' : 'ml-12'
                 }`}>
-                  <span className="inline-block px-3 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-400 rounded-full mb-2">
+                  <span className="mb-2 inline-block rounded-full bg-cyan-100 px-3 py-1 text-xs font-semibold text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300">
                     {item.duration}
                   </span>
-                  <h3 className="text-xl font-bold text-dark-900 dark:text-white">{item.title}</h3>
-                  <h4 className="text-lg text-primary-600 dark:text-primary-400 mb-3">{item.company}</h4>
-                  <p className="text-dark-700 dark:text-gray-300 mb-4">{item.description}</p>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white sm:text-xl">{item.title}</h3>
+                  <h4 className="mb-3 text-base text-cyan-700 dark:text-cyan-300 sm:text-lg">{item.company}</h4>
+                  <p className="text-sm leading-7 text-slate-700 dark:text-slate-300 sm:text-base">{item.description}</p>
                   
-                  <div className="flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {item.technologies.map((tech, i) => (
                       <span 
                         key={i}
-                        className="px-3 py-1 text-xs bg-gray-100 dark:bg-dark-600 text-dark-700 dark:text-gray-300 rounded-full"
+                        className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700 dark:bg-slate-800 dark:text-slate-300"
                       >
                         {tech}
                       </span>
@@ -162,7 +175,7 @@ const Experience = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
