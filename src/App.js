@@ -14,6 +14,7 @@ import WhatsAppFloat from './components/WhatsAppFloat';
 import NotFound from './components/NotFound';
 import PremiumBackground from './components/PremiumBackground';
 import CursorFollower from './components/CursorFollower';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ const AppShell = () => {
   return (
     <div className="relative min-h-screen overflow-hidden dark:bg-slate-950">
       <PremiumBackground />
+      <CustomCursor />
       <CursorFollower />
 
       <AnimatePresence mode="wait">

@@ -1,0 +1,283 @@
+/**
+ * CUSTOM CURSOR STYLES
+ * 
+ * High-performance custom cursor styling
+ * Uses CSS variables for positioning without JavaScript state updates
+ */
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CURSOR CONTAINER - Sets up CSS variable defaults
+   ════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Mouse position CSS variables (updated by JavaScript) */
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+
+  /* Cursor colors and sizing */
+  --cursor-color: #00d9ff;
+  --cursor-glow: rgba(0, 217, 255, 0.3);
+  --cursor-size: 8px;
+  --cursor-ring-size: 32px;
+}
+
+/* Dark mode variant (adjust if needed) */
+.dark {
+  --cursor-color: #00d9ff;
+  --cursor-glow: rgba(0, 217, 255, 0.3);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CURSOR DOT (Small center pointer)
+   
+   Properties:
+   - Tight following (no transition delay)
+   - Small size for precision targeting
+   - Bright center color
+   - mix-blend-mode: difference inverts over text
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  background: var(--cursor-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  
+  /* Tight following - no delay */
+  transform: translate(
+    calc(var(--mouse-x) - var(--cursor-size) / 2),
+    calc(var(--mouse-y) - var(--cursor-size) / 2)
+  );
+  
+  /* Smooth transform changes */
+  transition: opacity 0.2s ease-out;
+  
+  /* Invert colors when over text/elements */
+  mix-blend-mode: difference;
+  
+  /* Glow effect */
+  box-shadow: 0 0 8px var(--cursor-glow);
+  
+  /* Optimize for performance */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CURSOR RING (Larger outer circle with delay)
+   
+   Properties:
+   - Larger than cursor dot
+   - Soft blur/glow effect
+   - Follows with 0.15s delay (smooth trailing effect)
+   - Scales up on interactive elements
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-ring-size);
+  height: var(--cursor-ring-size);
+  border: 2px solid var(--cursor-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  
+  /* Offset to center on mouse position */
+  transform: translate(
+    calc(var(--mouse-x) - var(--cursor-ring-size) / 2),
+    calc(var(--mouse-y) - var(--cursor-ring-size) / 2)
+  );
+  
+  /* Smooth delay following effect (key for premium feel) */
+  transition: transform 0.15s ease-out, 
+              opacity 0.2s ease-out,
+              box-shadow 0.3s ease-out;
+  
+  /* Soft glow around ring */
+  box-shadow: 
+    0 0 10px rgba(0, 217, 255, 0.4),
+    0 0 20px rgba(0, 217, 255, 0.2),
+    inset 0 0 10px rgba(0, 217, 255, 0.1);
+  
+  /* Optimize for performance */
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CURSOR RING HOVER STATE
+   
+   When hovering over buttons, links, or .cursor-hover elements:
+   - Scale up (1.0 → 1.5x)
+   - Increase opacity
+   - Intensify glow
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.cursor-ring.cursor-ring-hovered {
+  /* Scale up on interactive element hover */
+  transform: translate(
+    calc(var(--mouse-x) - var(--cursor-ring-size) / 2),
+    calc(var(--mouse-y) - var(--cursor-ring-size) / 2)
+  ) scale(1.5);
+  
+  /* Brighter glow on hover */
+  box-shadow: 
+    0 0 15px rgba(0, 217, 255, 0.6),
+    0 0 30px rgba(0, 217, 255, 0.4),
+    inset 0 0 15px rgba(0, 217, 255, 0.2);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CURSOR VISIBILITY STATES
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* Hide cursor when leaving window */
+.cursor-dot.hidden,
+.cursor-ring.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SMOOTH SCROLLING SUPPORT
+   
+   Keep cursor visible while scrolling (no lag)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   COMPATIBLE WITH EXISTING COMPONENTS
+   
+   Make sure custom cursor doesn't interfere with component interactions
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* MagneticButton - cursor scales larger */
+.magnetic-button:hover .cursor-ring {
+  transform: translate(
+    calc(var(--mouse-x) - var(--cursor-ring-size) / 2),
+    calc(var(--mouse-y) - var(--cursor-ring-size) / 2)
+  ) scale(1.5);
+}
+
+/* ShimmerButton - cursor scales larger */
+.shimmer-button:hover .cursor-ring {
+  transform: translate(
+    calc(var(--mouse-x) - var(--cursor-ring-size) / 2),
+    calc(var(--mouse-y) - var(--cursor-ring-size) / 2)
+  ) scale(1.5);
+}
+
+/* GhostButton - cursor scales larger */
+.ghost-button:hover .cursor-ring {
+  transform: translate(
+    calc(var(--mouse-x) - var(--cursor-ring-size) / 2),
+    calc(var(--mouse-y) - var(--cursor-ring-size) / 2)
+  ) scale(1.5);
+}
+
+/* ProjectCard - cursor scales on hover */
+.project-card:hover .cursor-ring {
+  transform: translate(
+    calc(var(--mouse-x) - var(--cursor-ring-size) / 2),
+    calc(var(--mouse-y) - var(--cursor-ring-size) / 2)
+  ) scale(1.3);
+}
+
+/* FilterBar button - cursor scales on hover */
+.filter-button:hover .cursor-ring {
+  transform: translate(
+    calc(var(--mouse-x) - var(--cursor-ring-size) / 2),
+    calc(var(--mouse-y) - var(--cursor-ring-size) / 2)
+  ) scale(1.4);
+}
+
+/* Generic cursor-hover class for any element */
+.cursor-hover:hover .cursor-ring {
+  transform: translate(
+    calc(var(--mouse-x) - var(--cursor-ring-size) / 2),
+    calc(var(--mouse-y) - var(--cursor-ring-size) / 2)
+  ) scale(1.5);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE: Hide custom cursor on small screens
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Mobile devices use standard cursor */
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+
+  body {
+    cursor: auto !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   FOCUS STATES (Accessibility)
+   
+   Keep custom cursor working with keyboard navigation
+   ════════════════════════════════════════════════════════════════════════════ */
+
+button:focus .cursor-ring,
+a:focus .cursor-ring,
+[role="button"]:focus .cursor-ring {
+  box-shadow: 
+    0 0 15px rgba(0, 217, 255, 0.6),
+    0 0 30px rgba(0, 217, 255, 0.4),
+    inset 0 0 15px rgba(0, 217, 255, 0.2);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   PERFORMANCE OPTIMIZATIONS
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* GPU acceleration for smooth 60fps */
+.cursor-dot,
+.cursor-ring {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot,
+  .cursor-ring {
+    transition: opacity 0s !important;
+    display: none !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CUSTOMIZATION GUIDE
+   
+   To change cursor appearance, update these CSS variables in :root
+   ════════════════════════════════════════════════════════════════════════════
+   
+   --cursor-color: Main cursor color (default: #00d9ff - cyan)
+   --cursor-glow: Glow color with transparency
+   --cursor-size: Dot size (default: 8px)
+   --cursor-ring-size: Ring size (default: 32px)
+   
+   Example: Purple cursor
+   :root {
+     --cursor-color: #d946ef;
+     --cursor-glow: rgba(217, 70, 239, 0.3);
+   }
+   
+   ════════════════════════════════════════════════════════════════════════════
+ */
