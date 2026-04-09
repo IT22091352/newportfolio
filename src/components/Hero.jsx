@@ -7,6 +7,7 @@ import GhostButton from './GhostButton';
 import TiltCardOptimized from './TiltCardOptimized';
 import AnimatedOrbsOptimized from './AnimatedOrbsOptimized';
 import VerticalSocialBar from './VerticalSocialBar';
+import OptimizedResponsiveImage from './OptimizedResponsiveImage';
 
 const Hero = () => {
   const roles = [
@@ -168,10 +169,13 @@ const Hero = () => {
 
                   {/* Image Container */}
                   <div className="relative overflow-hidden rounded-2xl">
-                    <img
-                      src="/assets/pictures/ABOUT1.JPG"
+                    <OptimizedResponsiveImage
+                      src="/assets/pictures/about1.jpg"
                       alt="Chathuka Dilakshana"
+                      width={480}
+                      height={480}
                       className="h-[480px] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      priority={false}
                     />
 
                     {/* Overlay Gradient */}

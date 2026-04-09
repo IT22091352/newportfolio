@@ -57,7 +57,6 @@ export const loadOptimizedGoogleFonts = () => {
  */
 export const getOptimizedImageUrl = (url, options = {}) => {
   const {
-    format = 'auto', // 'webp', 'auto', or 'jpg'
     quality = '80', // 1-100
     width, // Image width for responsive optimization
   } = options;
