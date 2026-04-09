@@ -1,172 +1,200 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { useState, useEffect } from 'react';
+import MagneticButton from './MagneticButton';
+import ShimmerButton from './ShimmerButton';
+import GhostButton from './GhostButton';
+import TiltCard from './TiltCard';
+import AnimatedOrbs from './AnimatedOrbs';
+import VerticalSocialBar from './VerticalSocialBar';
 
 const Hero = () => {
   const roles = [
-    "Software Engineer",
-    "Web Developer",
-    "UI/UX Designer",
-    "Full Stack Engineer"
+    'Software Engineer',
+    'Full Stack Developer',
+    'UI/UX Designer',
+    'Web Architect',
   ];
-  
+
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(true);
-  const heroImage = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80';
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsAnimating(false);
-      setTimeout(() => {
-        setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
-        setIsAnimating(true);
-      }, 320);
-    }, 2600);
-    
+      setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+    }, 3500);
+
     return () => clearInterval(interval);
   }, [roles.length]);
 
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden pt-24 text-white md:pt-28">
-      <div className="absolute inset-0">
-        <img src={heroImage} alt="Workspace desk setup" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-900/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-slate-950/65" />
-      </div>
+    <section id="home" className="relative min-h-screen overflow-hidden pt-24 text-white md:pt-28 bg-gradient-to-b from-slate-950 via-slate-900 to-black">
+      {/* Animated Orbs Background */}
+      <AnimatedOrbs />
+
+      {/* Vertical Social Bar */}
+      <VerticalSocialBar />
 
       <div className="relative container flex min-h-[calc(100vh-5rem)] items-center">
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-          <div>
+        <div className="grid w-full items-center gap-12 lg:grid-cols-[1.3fr_0.9fr] pl-0 lg:pl-24">
+          {/* Left Content Area */}
+          <div className="space-y-8">
+            {/* Badge */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-6 inline-block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, type: 'spring', stiffness: 100 }}
+              className="inline-block"
             >
-              <span className="rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-[0.12em] text-slate-100 uppercase backdrop-blur-md">
-                Intern Software Engineer
+              <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-semibold tracking-[0.12em] text-cyan-100 uppercase backdrop-blur-md">
+                Premium Developer Portfolio
               </span>
             </motion.div>
-            
-            <motion.h1 
-              className="mb-6 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 20 }}
+
+            {/* Main Heading with Text Clipping Gradient */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
+              transition={{ duration: 0.7, delay: 0.15, type: 'spring', stiffness: 80 }}
+              className="font-display text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl"
             >
-              Building elegant digital products with performance, clarity, and craft.
+              <span className="bg-gradient-to-b from-slate-200 via-slate-300 to-slate-500 bg-clip-text text-transparent">
+                Chathuka Dilakshana
+              </span>
             </motion.h1>
 
-            <motion.p
-              className="mb-2 text-sm uppercase tracking-[0.22em] text-slate-300/90"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Chathuka Dilakshana
-            </motion.p>
-            
-            <div className="mb-8 flex h-10 items-center overflow-hidden">
-              <span className="mr-3 text-base text-slate-300 sm:text-lg">Focused on</span>
-              <AnimatePresence mode="wait">
-                {isAnimating && (
-                  <motion.span 
-                    key={roles[currentRoleIndex]}
-                    className="bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-base font-semibold text-transparent sm:text-xl"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.35 }}
-                  >
-                    {roles[currentRoleIndex]}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </div>
-            
-            <motion.p 
-              className="mb-10 max-w-2xl text-base leading-relaxed text-slate-200/90 sm:text-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
-            >
-              I design and ship robust web experiences with a clean product mindset. My approach blends engineering depth with thoughtful UX to create interfaces that feel polished, fast, and human.
-            </motion.p>
-            
+            {/* Role with Vertical Slide Animation */}
             <motion.div
-              className="flex flex-wrap gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35 }}
+              transition={{ duration: 0.6, delay: 0.25, type: 'spring', stiffness: 100 }}
+              className="h-10 overflow-hidden"
             >
-              <Link 
-                to="projects" 
-                smooth={true} 
-                duration={800}
-                offset={-90}
-              >
-                <motion.button
-                  className="btn-primary"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+              <span className="text-base sm:text-lg font-medium text-slate-300 mr-2">Specializing in</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roles[currentRoleIndex]}
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -40, opacity: 0 }}
+                  transition={{ duration: 0.5, type: 'spring', stiffness: 120 }}
+                  className="inline-block bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 bg-clip-text text-transparent text-base sm:text-lg font-bold"
                 >
-                  Explore Projects
-                </motion.button>
-              </Link>
-              
-              <Link 
-                to="contact" 
-                smooth={true} 
-                duration={800}
-                offset={-90}
-              >
-                <motion.button
-                  className="btn-outline"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Let us Connect
-                </motion.button>
-              </Link>
+                  {roles[currentRoleIndex]}
+                </motion.span>
+              </AnimatePresence>
             </motion.div>
-            
-            <motion.div 
-              className="mt-12 flex items-center gap-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35, type: 'spring', stiffness: 90 }}
+              className="max-w-xl text-base leading-relaxed text-slate-300/95 sm:text-lg"
             >
-              <a href="https://github.com/IT22091352" target="_blank" rel="noopener noreferrer" className="text-slate-300 transition-colors hover:text-white" aria-label="GitHub profile">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                </svg>
-              </a>
-              <a href="https://www.linkedin.com/in/chathuka-dilakshana-006315284" target="_blank" rel="noopener noreferrer" className="text-slate-300 transition-colors hover:text-white" aria-label="LinkedIn profile">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
+              I craft premium digital experiences with meticulous attention to performance, accessibility, and design. Every interface is engineered to feel responsive, beautiful, and user-centric.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45, type: 'spring', stiffness: 100 }}
+              className="flex flex-wrap gap-4 pt-4"
+            >
+              {/* Shimmer Button */}
+              <ShimmerButton
+                isShimmer={true}
+                className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-shadow"
+              >
+                <Link
+                  to="projects"
+                  smooth={true}
+                  duration={800}
+                  offset={-90}
+                  className="cursor-pointer"
+                >
+                  View Projects
+                </Link>
+              </ShimmerButton>
+
+              {/* Ghost Button with Magnetic Effect */}
+              <MagneticButton strength={18}>
+                <GhostButton className="px-8 py-3 text-slate-200">
+                  <Link
+                    to="contact"
+                    smooth={true}
+                    duration={800}
+                    offset={-90}
+                    className="cursor-pointer"
+                  >
+                    Contact Me
+                  </Link>
+                </GhostButton>
+              </MagneticButton>
+            </motion.div>
+
+            {/* Resume Download Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55, type: 'spring', stiffness: 100 }}
+            >
+              <MagneticButton
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-white/20 bg-white/5 backdrop-blur-md hover:border-cyan-400/40 hover:bg-white/10 transition-all"
+              >
+                <a
+                  href="#resume"
+                  className="text-sm font-medium text-slate-200 hover:text-cyan-300 transition-colors"
+                >
+                  ↓ Download Resume
+                </a>
+              </MagneticButton>
             </motion.div>
           </div>
-          
-          <motion.div 
-            className="mt-8 hidden lg:block"
-            initial={{ opacity: 0, scale: 0.8 }}
+
+          {/* Right Content Area - Profile Image with Tilt */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2, type: 'spring', stiffness: 80 }}
+            className="hidden lg:flex justify-center"
           >
-            <div className="glass-panel animate-float p-4">
-              <div className="overflow-hidden rounded-2xl border border-white/20 bg-white/5">
-                <img
-                  src="/assets/pictures/profilePIC1.JPG"
-                  alt="Chathuka Dilakshana"
-                  className="h-[520px] w-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                />
+            <TiltCard className="perspective">
+              <div className="relative group">
+                {/* Glassmorphic Card Wrapper */}
+                <div className="relative overflow-hidden rounded-3xl border border-white/10 backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 p-1">
+                  {/* Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-transparent to-blue-600/0 group-hover:from-cyan-500/20 group-hover:via-blue-500/10 group-hover:to-blue-600/20 transition-all duration-300 rounded-3xl" />
+
+                  {/* Image Container */}
+                  <div className="relative overflow-hidden rounded-2xl">
+                    <img
+                      src="/assets/pictures/profilePIC1.JPG"
+                      alt="Chathuka Dilakshana"
+                      className="h-[480px] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+
+                    {/* Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute -top-1 -right-1 h-20 w-20 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute -bottom-1 -left-1 h-24 w-24 bg-gradient-to-tr from-purple-500/15 to-cyan-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-            </div>
+            </TiltCard>
           </motion.div>
         </div>
       </div>
+
+      {/* Bottom Accent Line */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1, delay: 1.2 }}
+      />
     </section>
   );
 };

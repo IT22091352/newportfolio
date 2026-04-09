@@ -1,41 +1,44 @@
 import { motion } from 'framer-motion';
 import { popIn, revealUp, sectionStagger } from '../utils/motionVariants';
+import TechBadge from './common/TechBadge';
+import MarqueeRow from './MarqueeRow';
 
 const Skills = () => {
-  const skills = [
-    { 
-      category: 'Programming Languages',
-      items: [
-        { name: 'Java', level: 90 },
-        { name: 'JavaScript', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'HTML/CSS', level: 90 },
-        { name: 'Kotlin', level: 75 },
-        { name: 'PHP', level: 70 },
-      ]
+  const skillCategories = [
+    {
+      title: 'Programming Languages',
+      icon: '01',
+      accent: 'from-cyan-500/20 to-sky-500/5',
+      description: 'Core languages used across product, backend, and mobile work.',
+      items: ['Java', 'JavaScript', 'Python', 'HTML/CSS', 'Kotlin', 'PHP']
     },
     {
-      category: 'Frameworks',
-      items: [
-        { name: 'React.js', level: 85 },
-        { name: 'Node.js', level: 80 },
-        { name: 'Express.js', level: 80 },
-        { name: 'MongoDB', level: 75 },
-        { name: 'Spring Boot', level: 70 },
-        { name: 'Tailwind CSS', level: 85 },
-      ]
+      title: 'Frameworks',
+      icon: '02',
+      accent: 'from-sky-500/20 to-cyan-500/5',
+      description: 'Primary frameworks and platforms for shipping web applications.',
+      items: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Spring Boot', 'Tailwind CSS']
     },
     {
-      category: 'Other Skills',
-      items: [
-        { name: 'Creativity', level: 85 },
-        { name: 'Adaptabilit', level: 75 },
-        { name: 'communication', level: 80 },
-        { name: 'Resilience', level: 70 },
-        { name: 'Teamwork', level: 75 },
-        { name: 'Problem Solving', level: 85 },
-      ]
+      title: 'Product Skills',
+      icon: '03',
+      accent: 'from-slate-200/20 to-cyan-500/5',
+      description: 'Soft skills and execution habits that improve delivery quality.',
+      items: ['Creativity', 'Adaptability', 'Communication', 'Resilience', 'Teamwork', 'Problem Solving']
     }
+  ];
+
+  const marqueeTech = [
+    { name: 'React', group: 'UI Layer', icon: 'R' },
+    { name: 'Tailwind', group: 'Styling', icon: 'TW' },
+    { name: 'Framer Motion', group: 'Motion', icon: 'FM' },
+    { name: 'Node.js', group: 'Runtime', icon: 'N' },
+    { name: 'Express', group: 'API', icon: 'EX' },
+    { name: 'MongoDB', group: 'Database', icon: 'M' },
+    { name: 'Spring Boot', group: 'Backend', icon: 'SB' },
+    { name: 'Kotlin', group: 'Mobile', icon: 'K' },
+    { name: 'Java', group: 'Core', icon: 'J' },
+    { name: 'Figma', group: 'Design', icon: 'FG' }
   ];
 
   return (
@@ -67,65 +70,53 @@ const Skills = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {skills.map((skillGroup, groupIndex) => (
+          {skillCategories.map((skillGroup, groupIndex) => (
             <motion.div
               key={groupIndex}
               variants={popIn}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
-              className="glass-panel rounded-2xl p-5 sm:p-6"
+              className={`glass-panel relative overflow-hidden rounded-3xl p-5 sm:p-6 ${skillGroup.accent}`}
             >
-              <motion.h3 
-                className="card-title mb-6 border-b border-slate-200 pb-3 text-center text-slate-900 dark:border-slate-700 dark:text-slate-100"
-                variants={revealUp}
-              >
-                {skillGroup.category}
-              </motion.h3>
-              
-              <div className="space-y-6">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+              <TechBadge
+                icon={skillGroup.icon}
+                name={skillGroup.title}
+                color="border-cyan-300/15 bg-slate-950/50 text-slate-50"
+                subtitle={skillGroup.description}
+                delay={groupIndex * 0.08}
+              />
+
+              <div className="mt-6 flex flex-wrap gap-3">
                 {skillGroup.items.map((skill, index) => (
-                  <motion.div key={index} variants={revealUp}>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 sm:text-base">{skill.name}</span>
-                      <span className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 sm:text-base">{skill.level}%</span>
-                    </div>
-                    
-                    <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
-                      <motion.div 
-                        className="h-2.5 rounded-full bg-gradient-to-r from-cyan-700 to-sky-500"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                      ></motion.div>
-                    </div>
-                  </motion.div>
+                  <motion.span
+                    key={skill}
+                    className="rounded-full border border-white/10 bg-white/7 px-4 py-2 text-sm text-slate-100 backdrop-blur-md"
+                    variants={revealUp}
+                    transition={{ delay: index * 0.03 }}
+                  >
+                    {skill}
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
           ))}
         </motion.div>
         
-        <motion.div 
-          className="mt-12 text-center md:mt-14"
+        <motion.div
+          className="mt-12 space-y-4 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-[0_0_80px_rgba(15,23,42,0.15)] backdrop-blur-2xl md:mt-14"
           variants={revealUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
-          <h3 className="card-title mb-4 text-slate-900 dark:text-slate-100">Other Technologies and Tools</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {['AI/ML', 'Visual Studio Code', 'UI/UX Design', 'Android Studio', 'REST APIs', 'Material UI', 'Figma', 'Vercel', 'Git/GitHub', 'Netlify', 'MySQL'].map((tech, index) => (
-              <motion.span 
-                key={index}
-                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs text-slate-700 shadow-sm transition-shadow hover:shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 sm:text-sm"
-                variants={revealUp}
-              >
-                {tech}
-              </motion.span>
-            ))}
+          <div className="flex items-center justify-between px-2 text-sm uppercase tracking-[0.2em] text-slate-400">
+            <span>Technology Flow</span>
+            <span>Infinite marquee</span>
           </div>
+          <MarqueeRow items={marqueeTech} />
+          <MarqueeRow items={marqueeTech.slice().reverse()} reverse />
         </motion.div>
       </div>
     </section>
