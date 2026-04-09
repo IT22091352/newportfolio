@@ -17,7 +17,7 @@ const Footer = () => {
             transition={{ duration: 0.45 }}
           >
             <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">Chathuka Dilakshana</h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">Software Engineer Portfolio</p>
+            {/* <p className="text-sm text-slate-600 dark:text-slate-400">Software Engineer Portfolio</p> */}
           </motion.div>
           
           <motion.div
