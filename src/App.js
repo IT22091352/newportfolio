@@ -18,6 +18,7 @@ import { loadOptimizedGoogleFonts, setupDNSPrefetch, initEmailJS } from './confi
 const LazySkills = lazy(() => import('./components/Skills'));
 const LazyExperience = lazy(() => import('./components/Experience'));
 const LazyProjects = lazy(() => import('./components/Projects'));
+const LazyGithubActivity = lazy(() => import('./components/GithubActivity'));
 
 // Loading fallback for lazy sections
 const LoadingFallback = () => (
@@ -92,6 +93,10 @@ const AppShell = () => {
                   
                   <Suspense fallback={<LoadingFallback />}>
                     <LazyProjects />
+                  </Suspense>
+                  
+                  <Suspense fallback={<LoadingFallback />}>
+                    <LazyGithubActivity />
                   </Suspense>
                   
                   {/* Load Contact immediately (call to action) */}
