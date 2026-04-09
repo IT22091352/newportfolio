@@ -17,7 +17,22 @@ const GithubActivity = () => {
   useEffect(() => {
     const fetchGithubStats = async () => {
       try {
-        // Fetch from GitHub GraphQL API
+        // For real GitHub data, you need a Personal Access Token
+        // Steps to get real stats:
+        // 1. Go to https://github.com/settings/tokens/new
+        // 2. Create token with "public_repo" scope
+        // 3. Add to .env.local: REACT_APP_GITHUB_TOKEN=your_token_here
+        // 4. Uncomment the Authorization header below
+        
+        const headers = {
+          'Content-Type': 'application/json',
+        };
+
+        // Uncomment this if you have a GitHub token in .env.local
+        // if (process.env.REACT_APP_GITHUB_TOKEN) {
+        //   headers['Authorization'] = `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`;
+        // }
+
         const query = `
           query {
             user(login: "${username}") {
@@ -30,62 +45,44 @@ const GithubActivity = () => {
           }
         `;
 
-        const response = await fetch('https://api.github.com/graphql', {
+        const graphqlResponse = await fetch('https://api.github.com/graphql', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // Note: For production, use environment variable for token
-            // Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
-          },
+          headers,
           body: JSON.stringify({ query }),
         });
 
-        if (!response.ok) {
-          // If GraphQL fails, use the streak stats API as fallback
-          throw new Error('GraphQL request failed');
-        }
-
-        const data = await response.json();
-        if (data.data?.user?.contributionsCollection) {
-          const totalContributions = data.data.user.contributionsCollection.contributionCalendar.totalContributions;
+        const graphqlData = await graphqlResponse.json();
+        if (graphqlData.data?.user?.contributionsCollection) {
+          const totalContributions = graphqlData.data.user.contributionsCollection.contributionCalendar.totalContributions;
           setStats(prev => ({
             ...prev,
             totalContributions,
             loading: false,
           }));
-        }
-      } catch (error) {
-        // Fallback: Fetch from GitHub Readme Streak Stats API
-        try {
-          const response = await fetch(
-            `https://streak-stats.demolab.com/?user=${username}&theme=dark&hide_border=true`
-          );
-          
-          if (response.ok) {
-            setStats(prev => ({
-              ...prev,
-              loading: false,
-            }));
-          }
-        } catch (fallbackError) {
-          console.error('Error fetching GitHub stats:', fallbackError);
+        } else {
           setStats(prev => ({
             ...prev,
             loading: false,
-            error: 'Failed to load GitHub stats',
           }));
         }
+      } catch (error) {
+        console.error('Error fetching GitHub stats:', error);
+        setStats(prev => ({
+          ...prev,
+          loading: false,
+        }));
       }
     };
 
     fetchGithubStats();
   }, [username]);
 
-  // Static demo data (replace with real API calls in production)
+  // Static data - these will be overridden by API data when available
+  // Get real values from your GitHub profile or update with a GitHub token
   const demoStats = {
-    totalContributions: 1250,
-    currentStreak: 47,
-    longestStreak: 89,
+    totalContributions: 637, // Update with your real value or use GitHub token
+    currentStreak: 1,        // From your GitHub profile
+    longestStreak: 10,       // From your GitHub profile
   };
 
   const statCards = [
