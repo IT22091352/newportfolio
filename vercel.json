@@ -1,8 +1,4 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "build",
-  "skipDatabasePrune": true,
-  
   "headers": [
     {
       "source": "/(.*)",
