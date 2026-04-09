@@ -40,7 +40,7 @@ const About = () => {
               <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-slate-200/80 to-cyan-200/60 blur-xl dark:from-slate-700/40 dark:to-cyan-900/40"></div>
               <div className="relative overflow-hidden rounded-2xl shadow-custom-lg">
                 <img 
-                  src="/assets/pictures/about1.jpg"
+                  src="/assets/pictures/profilePIC1.JPG"
                   alt="Professional portrait" 
                   className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                 />

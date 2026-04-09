@@ -169,7 +169,7 @@ const Hero = () => {
                   {/* Image Container */}
                   <div className="relative overflow-hidden rounded-2xl">
                     <img
-                      src="/assets/pictures/profilePIC1.JPG"
+                      src="/assets/pictures/ABOUT1.JPG"
                       alt="Chathuka Dilakshana"
                       className="h-[480px] w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
