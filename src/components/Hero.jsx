@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import MagneticButton from './MagneticButton';
 import ShimmerButton from './ShimmerButton';
 import GhostButton from './GhostButton';
-import TiltCard from './TiltCard';
-import AnimatedOrbs from './AnimatedOrbs';
+import TiltCardOptimized from './TiltCardOptimized';
+import AnimatedOrbsOptimized from './AnimatedOrbsOptimized';
 import VerticalSocialBar from './VerticalSocialBar';
 
 const Hero = () => {
@@ -29,7 +29,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden pt-24 text-white md:pt-28 bg-gradient-to-b from-slate-950 via-slate-900 to-black">
       {/* Animated Orbs Background */}
-      <AnimatedOrbs />
+      <AnimatedOrbsOptimized />
 
       {/* Vertical Social Bar */}
       <VerticalSocialBar />
@@ -159,7 +159,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2, type: 'spring', stiffness: 80 }}
             className="hidden lg:flex justify-center"
           >
-            <TiltCard className="perspective">
+            <TiltCardOptimized className="perspective">
               <div className="relative group">
                 {/* Glassmorphic Card Wrapper */}
                 <div className="relative overflow-hidden rounded-3xl border border-white/10 backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 p-1">
@@ -183,7 +183,7 @@ const Hero = () => {
                 <div className="absolute -top-1 -right-1 h-20 w-20 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute -bottom-1 -left-1 h-24 w-24 bg-gradient-to-tr from-purple-500/15 to-cyan-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-            </TiltCard>
+            </TiltCardOptimized>
           </motion.div>
         </div>
       </div>

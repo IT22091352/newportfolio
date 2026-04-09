@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 import { useIsMobile, usePrefersReducedMotion } from '../hooks/useMediaQuery';
 
 /**
@@ -10,23 +11,7 @@ const TiltCardOptimized = ({ children, className = '' }) => {
   const isMobile = useIsMobile();
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  // On mobile or with reduced motion preference, just use simple scale animation
-  if (isMobile || prefersReducedMotion) {
-    return (
-      <motion.div
-        className={className}
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      >
-        {children}
-      </motion.div>
-    );
-  }
-
-  // Desktop version with full 3D tilt
-  const { useRef, useEffect, useState } = require('react');
-  const { useMotionValue, useSpring, useTransform } = require('framer-motion');
-
+  // Initialize all hooks at the top level (before any conditionals)
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -54,6 +39,20 @@ const TiltCardOptimized = ({ children, className = '' }) => {
     }
   }, [x, y]);
 
+  // On mobile or with reduced motion preference, use simple scale animation
+  if (isMobile || prefersReducedMotion) {
+    return (
+      <motion.div
+        className={className}
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
+  // Desktop version with full 3D tilt
   return (
     <motion.div
       ref={ref}
