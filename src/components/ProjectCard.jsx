@@ -94,7 +94,7 @@ const ProjectCard = ({ project, index }) => {
       <div className={`relative grid h-full ${project.featured ? 'grid-rows-[1.2fr_0.8fr]' : 'grid-rows-[1fr_auto]'}`}>
         {/* Image Container with Interactive Buttons Overlay */}
         <motion.div
-          className={`relative overflow-hidden group/image ${project.featured ? 'min-h-[300px]' : 'min-h-[200px]'}`}
+          className={`relative overflow-hidden group/image aspect-[16/10] sm:aspect-[16/9] md:aspect-auto ${project.featured ? 'md:min-h-[300px]' : 'md:min-h-[200px]'}`}
           whileHover={isHovered ? { y: -4 } : {}}
         >
           <OptimizedResponsiveImage

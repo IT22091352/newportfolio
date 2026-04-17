@@ -134,7 +134,7 @@ const Projects = () => {
         </motion.div>
 
         <motion.div
-          className="grid auto-rows-[200px] grid-cols-1 gap-5 md:auto-rows-[220px] md:grid-cols-3 lg:grid-cols-6 lg:auto-rows-[200px]"
+          className="grid auto-rows-auto grid-cols-1 gap-5 md:auto-rows-[220px] md:grid-cols-3 lg:grid-cols-6 lg:auto-rows-[200px]"
           layout
         >
           <AnimatePresence mode="popLayout">
