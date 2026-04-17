@@ -87,6 +87,23 @@ export const getOptimizedImageUrl = (url, options = {}) => {
 };
 
 /**
+ * Resolve a local asset path to a CDN URL when one is configured.
+ * Supports Cloudinary or ImageKit style base URLs provided through env vars.
+ */
+export const getCdnImageUrl = (path) => {
+  const cdnBaseUrl =
+    process.env.REACT_APP_IMAGE_CDN_BASE_URL ||
+    process.env.REACT_APP_CLOUDINARY_BASE_URL ||
+    process.env.REACT_APP_IMAGEKIT_BASE_URL;
+
+  if (!cdnBaseUrl || /^https?:\/\//i.test(path)) {
+    return path;
+  }
+
+  return `${cdnBaseUrl.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+};
+
+/**
  * Preload critical resources
  * Call this in app initialization or on route change
  */

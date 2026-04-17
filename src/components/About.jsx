@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { revealLeft, revealRight, revealUp, sectionStagger } from '../utils/motionVariants';
 import MagneticButton from './MagneticButton';
 import OptimizedResponsiveImage from './OptimizedResponsiveImage';
+import { getCdnImageUrl } from '../config/externalServicesConfig';
 
 const About = () => {
   return (
@@ -41,7 +42,7 @@ const About = () => {
               <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-slate-200/80 to-cyan-200/60 blur-xl dark:from-slate-700/40 dark:to-cyan-900/40"></div>
               <div className="relative overflow-hidden rounded-2xl shadow-custom-lg">
                 <OptimizedResponsiveImage
-                  src="/assets/pictures/profilePIC1.JPG"
+                  src={getCdnImageUrl('/assets/pictures/profilePIC1.JPG')}
                   alt="Professional portrait"
                   width={720}
                   height={900}

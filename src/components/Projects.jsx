@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { revealUp } from '../utils/motionVariants';
-import { getOptimizedImageUrl } from '../config/externalServicesConfig';
+import { getOptimizedImageUrl, getCdnImageUrl } from '../config/externalServicesConfig';
 import MagneticButton from './MagneticButton';
 import ProjectCard from './ProjectCard';
 import FilterBar from './FilterBar';
@@ -89,10 +89,10 @@ const Projects = () => {
 
   const optimizedProjects = filteredProjects.map((project, index) => ({
     ...project,
-    image: getOptimizedImageUrl(project.image, {
+    image: getCdnImageUrl(getOptimizedImageUrl(project.image, {
       quality: project.featured ? '72' : '68',
       width: project.featured ? 1400 : index < 2 ? 1200 : 1000,
-    }),
+    })),
   }));
 
   return (

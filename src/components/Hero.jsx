@@ -8,6 +8,7 @@ import TiltCardOptimized from './TiltCardOptimized';
 import AnimatedOrbsOptimized from './AnimatedOrbsOptimized';
 import VerticalSocialBar from './VerticalSocialBar';
 import OptimizedResponsiveImage from './OptimizedResponsiveImage';
+import { getCdnImageUrl } from '../config/externalServicesConfig';
 
 const Hero = () => {
   const roles = [
@@ -170,10 +171,12 @@ const Hero = () => {
                   {/* Image Container */}
                   <div className="relative overflow-hidden rounded-2xl">
                     <OptimizedResponsiveImage
-                      src="/assets/pictures/about1.jpg"
+                      src={getCdnImageUrl('/assets/pictures/about1-960.jpg')}
                       alt="Chathuka Dilakshana"
-                      width={480}
-                      height={480}
+                      width={960}
+                      height={1280}
+                      sizes="(max-width: 1024px) 90vw, 480px"
+                      srcSet={`${getCdnImageUrl('/assets/pictures/about1-640.jpg')} 640w, ${getCdnImageUrl('/assets/pictures/about1-960.jpg')} 960w, ${getCdnImageUrl('/assets/pictures/about1-1280.jpg')} 1280w`}
                       className="h-[480px] w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       priority={true}
                     />
