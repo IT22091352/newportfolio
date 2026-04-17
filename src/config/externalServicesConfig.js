@@ -61,15 +61,20 @@ export const getOptimizedImageUrl = (url, options = {}) => {
     width, // Image width for responsive optimization
   } = options;
 
+  const isRemoteUrl = /^https?:\/\//i.test(url);
+
   // If URL is from Unsplash, use their built-in optimization
-  if (url.includes('unsplash.com')) {
-    const params = new URLSearchParams({
-      auto: 'format',
-      fit: 'crop',
-      q: quality,
-      ...(width && { w: width }),
-    });
-    return `${url}?${params.toString()}`;
+  if (url.includes('unsplash.com') && isRemoteUrl) {
+    const parsedUrl = new URL(url);
+    parsedUrl.searchParams.set('auto', 'format');
+    parsedUrl.searchParams.set('fit', 'crop');
+    parsedUrl.searchParams.set('q', quality);
+
+    if (width) {
+      parsedUrl.searchParams.set('w', String(width));
+    }
+
+    return parsedUrl.toString();
   }
 
   // If URL is from istockphoto, keep as-is (already optimized)

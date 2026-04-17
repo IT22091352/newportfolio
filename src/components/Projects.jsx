@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { revealUp } from '../utils/motionVariants';
+import { getOptimizedImageUrl } from '../config/externalServicesConfig';
 import MagneticButton from './MagneticButton';
 import ProjectCard from './ProjectCard';
 import FilterBar from './FilterBar';
@@ -86,6 +87,14 @@ const Projects = () => {
     ? projects
     : projects.filter((project) => project.category === filter);
 
+  const optimizedProjects = filteredProjects.map((project, index) => ({
+    ...project,
+    image: getOptimizedImageUrl(project.image, {
+      quality: project.featured ? '72' : '68',
+      width: project.featured ? 1400 : index < 2 ? 1200 : 1000,
+    }),
+  }));
+
   return (
     <section id="projects" className="section-padding bg-slate-950 text-white">
       <div className="container">
@@ -127,7 +136,7 @@ const Projects = () => {
           layout
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
+            {optimizedProjects.map((project, index) => (
               <ProjectCard
                 key={project.title}
                 project={project}
