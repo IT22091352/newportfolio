@@ -45,8 +45,8 @@ const Projects = () => {
       description: 'A responsive portfolio website built with React.js and Next.js, showcasing projects, skills, and experience with optimized performance and seamless navigation.',
       image: '/assets/pictures/portfolio.png',
       technologies: ['React.js', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Responsive Design'],
-      demoLink: 'https://chathukadilakshanaportfolio.me',
-      githubLink: 'https://github.com/IT22091352/Chathuka-Dilakshana-Portfolio.git',
+      demoLink: 'https://chathukadilakshana.vercel.app/',
+      githubLink: 'https://github.com/IT22091352/newportfolio',
       category: 'frontend',
       span: 'md:col-span-2 lg:col-span-3'
     },

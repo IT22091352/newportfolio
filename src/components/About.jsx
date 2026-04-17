@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { revealLeft, revealRight, revealUp, sectionStagger } from '../utils/motionVariants';
 import MagneticButton from './MagneticButton';
+import OptimizedResponsiveImage from './OptimizedResponsiveImage';
 
 const About = () => {
   return (
@@ -39,9 +40,12 @@ const About = () => {
             <div className="relative">
               <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-slate-200/80 to-cyan-200/60 blur-xl dark:from-slate-700/40 dark:to-cyan-900/40"></div>
               <div className="relative overflow-hidden rounded-2xl shadow-custom-lg">
-                <img 
+                <OptimizedResponsiveImage
                   src="/assets/pictures/profilePIC1.JPG"
-                  alt="Professional portrait" 
+                  alt="Professional portrait"
+                  width={720}
+                  height={900}
+                  priority={false}
                   className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
@@ -74,7 +78,7 @@ const About = () => {
             
             <MagneticButton className="mt-8 inline-flex">
               <motion.a
-                href="./assets/projects/certificate/Chathuka Dilakshana Resume.pdf"
+                href="/assets/projects/certificate/Chathuka Dilakshana Resume.pdf"
                 download
                 className="btn-primary inline-flex items-center text-sm sm:text-base"
               >

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
 import MagneticButton from './MagneticButton';
+import OptimizedResponsiveImage from './OptimizedResponsiveImage';
 
 const ProjectCard = ({ project, index }) => {
   const cardRef = useRef(null);
@@ -96,13 +97,13 @@ const ProjectCard = ({ project, index }) => {
           className={`relative overflow-hidden group/image ${project.featured ? 'min-h-[300px]' : 'min-h-[200px]'}`}
           whileHover={isHovered ? { y: -4 } : {}}
         >
-          <motion.img
+          <OptimizedResponsiveImage
             src={project.image}
             alt={project.title}
+            width={960}
+            height={540}
+            priority={index < 2}
             className="h-full w-full object-cover"
-            initial={{ scale: 1 }}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
           />
 
           {/* Dark Overlay Gradient */}

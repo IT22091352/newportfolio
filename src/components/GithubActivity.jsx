@@ -256,6 +256,8 @@ const GithubActivity = () => {
               src={`https://streak-stats.demolab.com/?user=${username}&theme=dark&hide_border=true&background=1a1a2e`}
               alt="GitHub Streak"
               className="relative block w-full rounded-xl"
+              loading="lazy"
+              decoding="async"
             />
           </a>
         </motion.div>

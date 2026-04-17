@@ -175,7 +175,7 @@ const Hero = () => {
                       width={480}
                       height={480}
                       className="h-[480px] w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      priority={false}
+                      priority={true}
                     />
 
                     {/* Overlay Gradient */}

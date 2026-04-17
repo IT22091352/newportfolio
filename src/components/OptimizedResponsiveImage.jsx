@@ -13,7 +13,14 @@ const OptimizedResponsiveImage = ({
   height = 480, 
   className = '',
   priority = false,
+  loading,
+  fetchPriority,
+  sizes,
+  srcSet,
 }) => {
+  const resolvedLoading = loading || (priority ? 'eager' : 'lazy');
+  const resolvedFetchPriority = fetchPriority || (priority ? 'high' : 'low');
+
   return (
     <img
       src={src}
@@ -21,18 +28,13 @@ const OptimizedResponsiveImage = ({
       width={width}
       height={height}
       className={className}
-      // CRITICAL: lazy loading defers image load until visible in viewport
-      // On Vercel, this cuts initial page load time significantly
-      loading={priority ? 'eager' : 'lazy'}
-      // Async decoding prevents image painting from blocking JS
+      loading={resolvedLoading}
+      fetchPriority={resolvedFetchPriority}
+      sizes={sizes}
+      srcSet={srcSet}
       decoding="async"
-      // Prevent layout shift by maintaining aspect ratio before image loads
       style={{
         aspectRatio: `${width} / ${height}`,
-      }}
-      // When image finally loads, use smooth transition
-      onLoadStart={(e) => {
-        e.target.style.opacity = '0.7';
       }}
       onLoad={(e) => {
         e.target.style.transition = 'opacity 0.3s ease-in-out';
