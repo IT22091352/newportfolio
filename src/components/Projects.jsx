@@ -89,10 +89,12 @@ const Projects = () => {
 
   const optimizedProjects = filteredProjects.map((project, index) => ({
     ...project,
-    image: getCdnImageUrl(getOptimizedImageUrl(project.image, {
-      quality: project.featured ? '72' : '68',
-      width: project.featured ? 1400 : index < 2 ? 1200 : 1000,
-    })),
+    image: project.image.startsWith('/assets/')
+      ? `${process.env.PUBLIC_URL || ''}${project.image}`
+      : getCdnImageUrl(getOptimizedImageUrl(project.image, {
+          quality: project.featured ? '72' : '68',
+          width: project.featured ? 1400 : index < 2 ? 1200 : 1000,
+        })),
   }));
 
   return (
