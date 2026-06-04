@@ -48,7 +48,7 @@ const Hero = () => {
               className="inline-block"
             >
               <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-semibold tracking-[0.12em] text-cyan-100 uppercase backdrop-blur-md">
-                Premium Developer Portfolio
+                FULL-STACK DEVELOPER
               </span>
             </motion.div>
 
