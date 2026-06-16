@@ -41,14 +41,14 @@ const About = () => {
             <div className="relative">
               <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-slate-200/80 to-cyan-200/60 blur-xl dark:from-slate-700/40 dark:to-cyan-900/40"></div>
               <div className="relative overflow-hidden rounded-2xl shadow-custom-lg">
-                <OptimizedResponsiveImage
-                  src={getCdnImageUrl('/assets/pictures/profilePIC1.JPG')}
-                  alt="Professional portrait"
-                  width={720}
-                  height={900}
-                  priority={false}
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                />
+                  <OptimizedResponsiveImage
+                    src={getCdnImageUrl('/assets/pictures/profile1.png')}
+                    alt="Professional portrait"
+                    width={720}
+                    height={900}
+                    priority={false}
+                    className="w-full h-auto object-contain transition-transform duration-500"
+                  />
               </div>
             </div>
           </motion.div>
