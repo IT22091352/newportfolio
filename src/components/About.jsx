@@ -79,7 +79,7 @@ const About = () => {
             
             <MagneticButton className="mt-8 inline-flex">
               <motion.a
-                href="/assets/projects/certificate/Chathuka Dilakshana Resume.pdf"
+                href="/assets/projects/Chathuka Dilakshana Resume.pdf"
                 download
                 className="btn-primary inline-flex items-center text-sm sm:text-base"
               >
