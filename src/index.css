@@ -319,3 +319,11 @@
 @media (prefers-reduced-motion: reduce) {
   .uv-card::before, .uv-gradient-text, .uv-mouse::after { animation: none; }
 }
+
+/* Mobile performance: cheaper blur + no infinite border animations */
+@media (max-width: 768px) {
+  .uv-aurora { filter: blur(50px); opacity: 0.2; }
+  .uv-card { backdrop-filter: none; background: rgba(8, 15, 32, 0.92); }
+  .uv-card::before { animation: none; }
+  .uv-gradient-text { animation: none; }
+}

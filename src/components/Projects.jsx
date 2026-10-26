@@ -96,7 +96,7 @@ const Projects = () => {
       title: 'Portfolio Website',
       description: 'This responsive portfolio built with React, Tailwind CSS, Framer Motion and anime.js.',
       fullDescription: 'Optimized for performance with code-splitting, lazy-loaded sections and Uiverse-inspired UI components.',
-      image: '/assets/pictures/portfolio.jpg',
+      image: '/assets/pictures/portfolio.webp',
       technologies: ['React.js', 'Tailwind CSS', 'Framer Motion', 'anime.js'],
       demoLink: 'https://chathukadilakshana.vercel.app/',
       githubLink: 'https://github.com/IT22091352/newportfolio',
@@ -155,7 +155,7 @@ const Projects = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          AI/ML research, SaaS platforms and full-stack systems — shipped, deployed and measured.
+          AI/ML research, SaaS platforms and full-stack systems shipped, deployed and measured.
         </motion.p>
 
         <motion.div

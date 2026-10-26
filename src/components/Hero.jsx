@@ -6,6 +6,7 @@ import TiltCardOptimized from './TiltCardOptimized';
 import VerticalSocialBar from './VerticalSocialBar';
 import OptimizedResponsiveImage from './OptimizedResponsiveImage';
 import { getCdnImageUrl } from '../config/externalServicesConfig';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 const roles = [
   'Full-Stack Developer',
@@ -19,6 +20,7 @@ const NAME = 'Chathuka Dilakshana';
 const Hero = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const heroRef = useRef(null);
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   useEffect(() => {
     const id = setInterval(() => setRoleIndex((i) => (i + 1) % roles.length), 3200);
@@ -135,7 +137,7 @@ const Hero = () => {
             </div>
 
             <p data-hero-item className="anime-hidden max-w-xl text-base leading-relaxed text-slate-300/95 sm:text-lg">
-              Industry-experienced developer building ERP systems and scalable web apps with Laravel, MERN and Next.js —
+              Industry-experienced developer building ERP systems and scalable web apps with Laravel, MERN and Next.js
               with a passion for RESTful APIs, AI integration and production-grade deployments. BSc in IT from SLIIT.
             </p>
 
@@ -158,16 +160,16 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="hidden justify-center lg:flex">
+          {isDesktop && (<div className="flex justify-center">
             <TiltCardOptimized className="perspective">
               <div className="group relative">
                 <div className="uv-card p-1.5">
                   <div className="relative overflow-hidden rounded-2xl">
                     <OptimizedResponsiveImage
-                      src={getCdnImageUrl('/assets/pictures/hero.jpg')}
+                      src={getCdnImageUrl('/assets/pictures/hero.webp')}
                       alt="Chathuka Dilakshana"
-                      width={960}
-                      height={1280}
+                      width={800}
+                      height={1200}
                       sizes="(max-width: 1024px) 90vw, 480px"
                       className="h-[480px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       priority={true}
@@ -181,7 +183,7 @@ const Hero = () => {
                 </div>
               </div>
             </TiltCardOptimized>
-          </div>
+          </div>)}
         </div>
 
         <div className="mt-10 hidden justify-center md:flex">

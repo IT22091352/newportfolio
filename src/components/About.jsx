@@ -40,7 +40,7 @@ const About = () => {
           <div data-anime className="uv-card p-3 sm:p-4" style={{ opacity: 0 }} {...spotlightHandlers}>
             <div className="relative overflow-hidden rounded-2xl">
               <OptimizedResponsiveImage
-                src={getCdnImageUrl('/assets/pictures/about.png')}
+                src={getCdnImageUrl('/assets/pictures/about.webp')}
                 alt="Chathuka Dilakshana portrait"
                 width={720}
                 height={900}
@@ -66,7 +66,7 @@ const About = () => {
               <p className="body-copy mt-5 text-slate-300">
                 Full-Stack Developer with hands-on industry experience in ERP systems and scalable web applications using
                 Laravel, the MERN stack and Next.js. Skilled in RESTful API development, AI integration, database design,
-                debugging and production deployment — with practical experience in AI/ML projects and a BSc in Information
+                debugging and production deployment with practical experience in AI/ML projects and a BSc in Information
                 Technology from SLIIT. Strong understanding of software development practices, clean code principles and
                 building user-focused solutions.
               </p>
