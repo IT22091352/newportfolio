@@ -29,20 +29,9 @@ export const loadOptimizedGoogleFonts = () => {
     return; // Already loaded
   }
 
-  const link = document.createElement('link');
-  link.rel = 'preconnect';
-  link.href = 'https://fonts.googleapis.com';
-  document.head.appendChild(link);
-
-  const link2 = document.createElement('link');
-  link2.rel = 'preconnect';
-  link2.href = 'https://fonts.gstatic.com';
-  link2.crossOrigin = 'anonymous';
-  document.head.appendChild(link2);
-
   const link3 = document.createElement('link');
   link3.href =
-    'https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap';
+    'https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;600&display=swap';
   link3.rel = 'stylesheet';
   link3.media = 'print';
   link3.onload = function () {

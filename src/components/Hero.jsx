@@ -40,13 +40,12 @@ const Hero = () => {
     }
 
     const tl = createTimeline({ defaults: { ease: 'outExpo' } });
-    tl.add(items[0], { translateY: [-20, 0], duration: 500 })
+    tl.add(items[0], { translateY: [-20, 0], duration: 400 })
       .add(letters, {
-        opacity: [0, 1],
-        translateY: [40, 0],
-        duration: 500,
-        delay: stagger(15),
-      }, '-=300');
+        translateY: [24, 0],
+        duration: 400,
+        delay: stagger(12),
+      }, '-=200');
 
     const floaters = animate(root.querySelectorAll('[data-float]'), {
       translateY: [-14, 14],
@@ -107,7 +106,7 @@ const Hero = () => {
               {NAME.split(' ').map((word, wi) => (
                 <span key={wi} className="mr-4 inline-block whitespace-nowrap" aria-hidden="true">
                   {word.split('').map((ch, ci) => (
-                    <span key={ci} data-hero-letter className="uv-gradient-text inline-block" style={{ opacity: 0 }}>{ch}</span>
+                    <span key={ci} data-hero-letter className="uv-gradient-text inline-block">{ch}</span>
                   ))}
                 </span>
               ))}
