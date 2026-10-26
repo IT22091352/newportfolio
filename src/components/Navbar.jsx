@@ -51,7 +51,7 @@ const Navbar = () => {
                   whileTap={{ scale: 0.97 }}
                 >
                   <Link 
-                    to={item.toLowerCase()} 
+                    to={item.toLowerCase()} href={`#${item.toLowerCase()}`} 
                     smooth={true} 
                     duration={600}
                     spy={true}
@@ -98,7 +98,7 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <Link 
                   key={item}
-                  to={item.toLowerCase()} 
+                  to={item.toLowerCase()} href={`#${item.toLowerCase()}`} 
                   smooth={true} 
                   duration={500}
                   offset={-90}

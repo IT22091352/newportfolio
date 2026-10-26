@@ -40,7 +40,7 @@ const Hero = () => {
     }
 
     const tl = createTimeline({ defaults: { ease: 'outExpo' } });
-    tl.add(items[0], { opacity: [0, 1], translateY: [-20, 0], duration: 800 })
+    tl.add(items[0], { translateY: [-20, 0], duration: 800 })
       .add(letters, {
         opacity: [0, 1],
         translateY: [80, 0],
@@ -49,7 +49,6 @@ const Hero = () => {
         delay: stagger(35),
       }, '-=500')
       .add([...items].slice(1), {
-        opacity: [0, 1],
         translateY: [30, 0],
         duration: 900,
         delay: stagger(110),
@@ -102,7 +101,7 @@ const Hero = () => {
       <div className="container relative flex min-h-[calc(100vh-6rem)] flex-col justify-center py-10">
         <div className="grid w-full items-center gap-12 pl-0 lg:grid-cols-[1.3fr_0.9fr] lg:pl-24">
           <div className="space-y-7">
-            <div data-hero-item className="anime-hidden inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-100 backdrop-blur-md">
+            <div data-hero-item className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-100 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -120,7 +119,7 @@ const Hero = () => {
               ))}
             </h1>
 
-            <div data-hero-item className="anime-hidden h-11 overflow-hidden">
+            <div data-hero-item className="h-11 overflow-hidden">
               <span className="mr-2 text-base font-medium text-slate-300 sm:text-lg">I am a</span>
               <AnimatePresence mode="wait">
                 <motion.span
@@ -136,17 +135,17 @@ const Hero = () => {
               </AnimatePresence>
             </div>
 
-            <p data-hero-item className="anime-hidden max-w-xl text-base leading-relaxed text-slate-300/95 sm:text-lg">
+            <p data-hero-item className="max-w-xl text-base leading-relaxed text-slate-300/95 sm:text-lg">
               Industry-experienced developer building ERP systems and scalable web apps with Laravel, MERN and Next.js
               with a passion for RESTful APIs, AI integration and production-grade deployments. BSc in IT from SLIIT.
             </p>
 
-            <div data-hero-item className="anime-hidden flex flex-wrap gap-4 pt-2">
-              <Link to="projects" smooth duration={800} offset={-90} className="uv-btn">
+            <div data-hero-item className="flex flex-wrap gap-4 pt-2">
+              <Link to="projects" href="#projects" smooth duration={800} offset={-90} className="uv-btn">
                 View Projects
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
-              <Link to="contact" smooth duration={800} offset={-90} className="uv-btn-ghost">
+              <Link to="contact" href="#contact" smooth duration={800} offset={-90} className="uv-btn-ghost">
                 Contact Me
               </Link>
               <a
