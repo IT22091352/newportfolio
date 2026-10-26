@@ -132,7 +132,7 @@ const Projects = () => {
       ? `${process.env.PUBLIC_URL || ''}${project.image}`
       : getCdnImageUrl(getOptimizedImageUrl(project.image, {
           quality: '65',
-          width: 800,
+          width: 640,
         })),
   }));
 
