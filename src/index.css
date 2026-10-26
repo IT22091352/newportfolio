@@ -137,3 +137,185 @@
     50% { transform: translateY(-14px); }
   }
 }
+
+/* ===== Uiverse-inspired UI kit (anime.js powered interactions) ===== */
+@property --uv-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@layer components {
+  /* Card with spinning conic-gradient border */
+  .uv-card {
+    position: relative;
+    isolation: isolate;
+    border-radius: 1.25rem;
+    background: rgba(8, 15, 32, 0.78);
+    backdrop-filter: blur(18px);
+  }
+  .uv-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--uv-angle), transparent 0 55%, #22d3ee 75%, #818cf8 88%, #e879f9 95%, transparent 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.35;
+    transition: opacity 0.4s ease;
+    animation: uv-spin 6s linear infinite;
+  }
+  .uv-card:hover::before { opacity: 1; }
+  .uv-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(34, 211, 238, 0.14), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .uv-card:hover::after { opacity: 1; }
+
+  /* Neon glow button */
+  .uv-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #031018;
+    background: linear-gradient(120deg, #22d3ee, #818cf8 55%, #e879f9);
+    background-size: 200% 200%;
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.5), 0 10px 30px -8px rgba(34, 211, 238, 0.55);
+    transition: transform 0.25s ease, box-shadow 0.3s ease, background-position 0.6s ease;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .uv-btn:hover {
+    background-position: 100% 50%;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.12), 0 16px 40px -8px rgba(129, 140, 248, 0.7);
+  }
+  .uv-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-20deg);
+  }
+  .uv-btn:hover::after { animation: uv-shine 0.8s ease; }
+
+  .uv-btn-ghost {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .uv-btn-ghost:hover {
+    color: #22d3ee;
+    border-color: rgba(34, 211, 238, 0.7);
+    box-shadow: 0 0 24px rgba(34, 211, 238, 0.35), inset 0 0 14px rgba(34, 211, 238, 0.12);
+  }
+
+  /* Glowing gradient headline */
+  .uv-gradient-text {
+    background: linear-gradient(100deg, #e2e8f0 0%, #67e8f9 35%, #a5b4fc 65%, #f0abfc 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: uv-gradient-pan 8s linear infinite;
+  }
+
+  /* Pill chip */
+  .uv-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #cffafe;
+    border: 1px solid rgba(34, 211, 238, 0.25);
+    background: rgba(34, 211, 238, 0.06);
+    transition: all 0.25s ease;
+  }
+  .uv-chip:hover {
+    transform: translateY(-3px);
+    border-color: rgba(34, 211, 238, 0.8);
+    background: rgba(34, 211, 238, 0.16);
+    box-shadow: 0 8px 22px -6px rgba(34, 211, 238, 0.55);
+  }
+
+  /* Anime.js hooks: start hidden, anime animates them in */
+  .anime-hidden { opacity: 0; }
+
+  /* Aurora blobs */
+  .uv-aurora {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  /* Timeline */
+  .uv-timeline-line {
+    background: linear-gradient(to bottom, transparent, #22d3ee 10%, #818cf8 55%, #e879f9 90%, transparent);
+  }
+  .uv-dot {
+    box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.15), 0 0 18px rgba(34, 211, 238, 0.8);
+  }
+
+  /* Mouse-wheel scroll hint */
+  .uv-mouse {
+    width: 26px; height: 42px;
+    border: 2px solid rgba(148, 163, 184, 0.6);
+    border-radius: 14px;
+    position: relative;
+  }
+  .uv-mouse::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 8px;
+    width: 4px; height: 8px;
+    margin-left: -2px;
+    border-radius: 2px;
+    background: #22d3ee;
+    animation: uv-wheel 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes uv-spin { to { --uv-angle: 360deg; } }
+@keyframes uv-shine { to { left: 130%; } }
+@keyframes uv-gradient-pan { to { background-position: 200% center; } }
+@keyframes uv-wheel {
+  0% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(14px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uv-card::before, .uv-gradient-text, .uv-mouse::after { animation: none; }
+}

@@ -1,111 +1,78 @@
 import { motion } from 'framer-motion';
-import { popIn, revealUp, sectionStagger } from '../utils/motionVariants';
-import TechBadge from './common/TechBadge';
+import { revealUp } from '../utils/motionVariants';
 import MarqueeRow from './MarqueeRow';
+import { AnimeHeading, spotlightHandlers, useAnimeReveal } from '../hooks/useAnime';
+
+const skillCategories = [
+  { title: 'Languages', icon: '</>', description: 'Core languages across backend, frontend and data work.', items: ['Java', 'PHP', 'JavaScript', 'Python', 'SQL', 'HTML5', 'CSS3', 'TypeScript'] },
+  { title: 'Frameworks & Libraries', icon: '{ }', description: 'Frameworks used to ship full-stack products.', items: ['Laravel', 'React.js', 'Node.js', 'Express.js', 'Next.js', 'Tailwind CSS', 'Bootstrap 5'] },
+  { title: 'Databases', icon: 'DB', description: 'Relational and document stores with solid schema design.', items: ['MySQL', 'MongoDB', 'Supabase'] },
+  { title: 'Tools & Practices', icon: '⚡', description: 'Workflow, quality and delivery practices.', items: ['Git/GitHub', 'Postman', 'Prisma ORM', 'JWT Auth', 'SDLC', 'Agile / Sprints', 'Code Reviews', 'CI/CD (Vercel)', 'QA & Regression Testing'] },
+  { title: 'Specialized Domains', icon: '🧠', description: 'Areas of deeper interest and project work.', items: ['ERP Systems', 'Machine Learning', 'Deep Learning', 'UI/UX Design', 'AI Integration'] },
+];
+
+const marqueeTech = [
+  { name: 'Laravel', group: 'Backend', icon: 'L' },
+  { name: 'React', group: 'UI Layer', icon: 'R' },
+  { name: 'Next.js', group: 'Full-Stack', icon: 'N' },
+  { name: 'Node.js', group: 'Runtime', icon: 'JS' },
+  { name: 'TypeScript', group: 'Language', icon: 'TS' },
+  { name: 'Prisma', group: 'ORM', icon: 'P' },
+  { name: 'MySQL', group: 'Database', icon: 'DB' },
+  { name: 'MongoDB', group: 'Database', icon: 'M' },
+  { name: 'TensorFlow', group: 'Deep Learning', icon: 'TF' },
+  { name: 'XGBoost', group: 'ML', icon: 'XG' },
+  { name: 'Tailwind', group: 'Styling', icon: 'TW' },
+  { name: 'Anime.js', group: 'Motion', icon: 'AJ' },
+];
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: 'Programming Languages',
-      icon: '01',
-      accent: 'from-cyan-500/20 to-sky-500/5',
-      description: 'Core languages used across product, backend, and mobile work.',
-      items: ['Java', 'JavaScript', 'Python', 'HTML/CSS', 'Kotlin', 'PHP']
-    },
-    {
-      title: 'Frameworks',
-      icon: '02',
-      accent: 'from-sky-500/20 to-cyan-500/5',
-      description: 'Primary frameworks and platforms for shipping web applications.',
-      items: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Spring Boot', 'Tailwind CSS']
-    },
-    {
-      title: 'Product Skills',
-      icon: '03',
-      accent: 'from-slate-200/20 to-cyan-500/5',
-      description: 'Soft skills and execution habits that improve delivery quality.',
-      items: ['Creativity', 'Adaptability', 'Communication', 'Resilience', 'Teamwork', 'Problem Solving']
-    }
-  ];
-
-  const marqueeTech = [
-    { name: 'React', group: 'UI Layer', icon: 'R' },
-    { name: 'Tailwind', group: 'Styling', icon: 'TW' },
-    { name: 'Framer Motion', group: 'Motion', icon: 'FM' },
-    { name: 'Node.js', group: 'Runtime', icon: 'N' },
-    { name: 'Express', group: 'API', icon: 'EX' },
-    { name: 'MongoDB', group: 'Database', icon: 'M' },
-    { name: 'Spring Boot', group: 'Backend', icon: 'SB' },
-    { name: 'Kotlin', group: 'Mobile', icon: 'K' },
-    { name: 'Java', group: 'Core', icon: 'J' },
-    { name: 'Figma', group: 'Design', icon: 'FG' }
-  ];
+  const gridRef = useAnimeReveal('[data-anime]', { y: 40, delay: 90 });
 
   return (
-    <section id="skills" className="section-padding bg-slate-100/70 dark:bg-slate-900/45">
-      <div className="container">
-        <motion.h2 
-          className="section-heading"
-          variants={revealUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          Technical Expertise
-        </motion.h2>
+    <section id="skills" className="section-padding relative overflow-hidden bg-[#050b1c]">
+      <div className="uv-aurora right-0 top-10 h-72 w-72 bg-sky-600 opacity-20" />
+      <div className="container relative">
+        <AnimeHeading text="Technical Expertise" className="section-heading text-white" />
         <motion.p
-          className="section-subheading"
+          className="section-subheading text-slate-300"
           variants={revealUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
-          A balanced stack across frontend, backend, and product execution skills.
+          A full-stack toolkit across ERP, web, data and AI/ML engineering.
         </motion.p>
-        
-        <motion.div
-          className="mt-10 grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3"
-          variants={sectionStagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {skillCategories.map((skillGroup, groupIndex) => (
-            <motion.div
-              key={groupIndex}
-              variants={popIn}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              className={`glass-panel relative overflow-hidden rounded-3xl p-5 sm:p-6 ${skillGroup.accent}`}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-              <TechBadge
-                icon={skillGroup.icon}
-                name={skillGroup.title}
-                color="border-cyan-300/15 bg-slate-950/50 text-slate-50"
-                subtitle={skillGroup.description}
-                delay={groupIndex * 0.08}
-              />
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                {skillGroup.items.map((skill, index) => (
-                  <motion.span
-                    key={skill}
-                    className="rounded-full border border-white/10 bg-white/7 px-4 py-2 text-sm text-slate-100 backdrop-blur-md"
-                    variants={revealUp}
-                    transition={{ delay: index * 0.03 }}
-                  >
-                    {skill}
-                  </motion.span>
+        <div ref={gridRef} className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6">
+          {skillCategories.map((group, i) => (
+            <div
+              key={group.title}
+              data-anime
+              className={`uv-card p-6 ${i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
+              style={{ opacity: 0 }}
+              {...spotlightHandlers}
+            >
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 font-mono text-sm font-bold text-cyan-300">
+                  {group.icon}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">{group.title}</h3>
+                  <p className="text-xs text-slate-400">{group.description}</p>
+                </div>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-2.5">
+                {group.items.map((s) => (
+                  <span key={s} className="uv-chip">{s}</span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
-        
+        </div>
+
         <motion.div
-          className="mt-12 space-y-4 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-[0_0_80px_rgba(15,23,42,0.15)] backdrop-blur-2xl md:mt-14"
+          className="mt-14 space-y-4 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 backdrop-blur-2xl"
           variants={revealUp}
           initial="hidden"
           whileInView="show"

@@ -11,75 +11,114 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'Mobile Gaming App',
-      description: 'Developed an interactive Android gaming app using Kotlin, focusing on delivering smooth gameplay and a modern UI with view-binding.',
-      image: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80',
-      technologies: ['Android Studio', 'Kotlin', 'UI/UX Design', 'View Binding'],
-      demoLink: 'https://www.linkedin.com/posts/chathuka-dilakshana-006315284_mobileapp-androiddev-kotlin-activity-7206671989325848576-pWmX?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEUaFsYBrXMHT91mODYsNiwla3z6-ffHEXk',
-      githubLink: 'https://github.com/IT22091352/Mobile-Gaming-App.git',
-      category: 'mobile',
-      span: 'md:col-span-1 lg:col-span-2 lg:row-span-1'
+      title: 'AI-Powered Sinhala Sign Language Platform',
+      description: 'React.js interface and custom NLP engine that tokenizes Sinhala text and maps vocabulary to standardized semantic IDs, streaming 60 FPS sign animations in under 200 ms.',
+      fullDescription: 'Engineered a rule-based algorithm to restructure Sinhala grammar into visual-spatial (TSOV) format, integrated a Word2Vec model for semantic slang matching, and optimized real-time video generation with MoviePy. Co-authored and published in IEEE Xplore (eSmarTA-2026).',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80',
+      technologies: ['Python', 'Flask', 'React.js', 'NLP', 'Word2Vec', 'MoviePy'],
+      demoLink: 'https://github.com/IT22091352',
+      githubLink: 'https://github.com/IT22091352',
+      category: 'ai',
+      featured: true
+    },
+    {
+      title: 'Operations Hub – Project Management Platform',
+      description: 'Full-stack project and task platform with RBAC across Admin, Manager and Member dashboards, deployed live on Vercel.',
+      fullDescription: 'Architected a RESTful API with Prisma ORM and MySQL to manage multi-tier relational schemas, atomic task-assignment transactions and secure JWT-based authentication.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80',
+      technologies: ['Next.js 15', 'Node.js', 'Express.js', 'Prisma', 'MySQL', 'TypeScript', 'Tailwind CSS'],
+      demoLink: 'https://project-management-cyphlab.vercel.app',
+      githubLink: 'https://github.com/IT22091352',
+      category: 'fullstack',
+      featured: true
+    },
+    {
+      title: 'ViralFlow AI (SaaS Platform)',
+      description: 'Live SaaS MVP for automated video transcription and subtitle generation with AI-driven processing pipelines.',
+      fullDescription: 'Built a scalable full-stack app using the Next.js App Router and Node.js, integrating AI-driven pipelines for text generation. Deployed to production at tryviralflow.vercel.app.',
+      image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1000&q=80',
+      technologies: ['Next.js', 'Node.js', 'MongoDB', 'Tailwind CSS'],
+      demoLink: 'https://tryviralflow.vercel.app',
+      githubLink: 'https://github.com/IT22091352',
+      category: 'ai'
+    },
+    {
+      title: 'Deep Learning Cancer Data Analysis',
+      description: 'Benchmarked four deep learning architectures for breast cancer classification, reaching 98.8% accuracy with zero false negatives.',
+      fullDescription: 'Compared architectures including ResNet-DNN and Wide & Deep Network on the Wisconsin Diagnostic Dataset, achieving 1.00 malignant recall to meet the critical clinical safety target.',
+      image: 'https://images.unsplash.com/photo-1589561253898-768105ca91a8?auto=format&fit=crop&w=1000&q=80',
+      technologies: ['CNN', 'TensorFlow', 'Keras', 'Python'],
+      demoLink: 'https://github.com/IT22091352',
+      githubLink: 'https://github.com/IT22091352',
+      category: 'ai'
+    },
+    {
+      title: 'IoT Intrusion Detection System',
+      description: 'GPU-accelerated XGBoost model classifying 33 cyber-attack categories with 99.37% accuracy and 82.00% macro F1 on unseen data.',
+      fullDescription: 'Built a data pipeline to preprocess the 1.5M-record CICIoT2023 dataset using RobustScaler and class-balancing techniques.',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80',
+      technologies: ['Python', 'XGBoost', 'Machine Learning'],
+      demoLink: 'https://github.com/IT22091352',
+      githubLink: 'https://github.com/IT22091352',
+      category: 'ai'
+    },
+    {
+      title: 'Community Empowerment Hub',
+      description: 'Marketplace and job portal with role-based access for Sellers, Buyers and Admins, secured with JWT and enhanced by OpenAI-powered tools.',
+      fullDescription: 'Integrated OpenAI APIs to deliver AI-powered tools that improve platform utility and user interaction.',
+      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'OpenAI API', 'JWT'],
+      demoLink: 'https://github.com/IT22091352',
+      githubLink: 'https://github.com/IT22091352',
+      category: 'fullstack'
+    },
+    {
+      title: 'Ceylon Buddy – Tour Guide Web App',
+      description: 'Fully responsive tour guide platform designed and deployed for a client, live at ceylonbuddytour.com.',
+      fullDescription: 'Delivered with scalability and security in mind using the MERN stack.',
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1000&q=80',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
+      demoLink: 'https://ceylonbuddytour.com',
+      githubLink: 'https://github.com/IT22091352',
+      category: 'fullstack'
     },
     {
       title: 'Tourist Management System',
-      description: 'Built a comprehensive tourist management system using the MERN stack with features for bookings, reviews, and personalized itineraries.',
-      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80',
-      technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'REST API'],
-      demoLink: '/notfound',
+      description: 'Full-stack tourism management app with secure CRUD operations for bookings, travel packages and authorization protocols.',
+      fullDescription: 'Built with the MERN stack, with role-based authorization and secure booking workflows.',
+      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1000&q=80',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT'],
+      demoLink: 'https://github.com/IT22091352/Tourist-Management-System.git',
       githubLink: 'https://github.com/IT22091352/Tourist-Management-System.git',
-      category: 'fullstack',
-      featured: true,
-      span: 'md:col-span-2 md:row-span-2 lg:col-span-4 lg:row-span-2'
-    },
-    {
-      title: 'Review Analysis Project',
-      description: 'Implemented a machine learning project for sentiment analysis of product reviews using text preprocessing, CountVectorizer, TF-IDF, and various ML models.',
-      image: 'https://images.unsplash.com/photo-1589561253898-768105ca91a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      technologies: ['Python', 'Jupyter Notebook', 'Machine Learning', 'NLP', 'Data Analysis'],
-      demoLink: 'https://www.linkedin.com/posts/chathuka-dilakshana-006315284_machinelearning-datascience-reviewanalysis-activity-7221264760644755456-a9hD?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEUaFsYBrXMHT91mODYsNiwla3z6-ffHEXk',
-      githubLink: 'https://github.com/IT22091352/review_analysis_project.git',
-      category: 'data',
-      span: 'md:col-span-1 lg:col-span-2'
+      category: 'fullstack'
     },
     {
       title: 'Portfolio Website',
-      description: 'A responsive portfolio website built with React.js and Next.js, showcasing projects, skills, and experience with optimized performance and seamless navigation.',
-      image: '/assets/pictures/portfolio.png',
-      technologies: ['React.js', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Responsive Design'],
+      description: 'This responsive portfolio built with React, Tailwind CSS, Framer Motion and anime.js.',
+      fullDescription: 'Optimized for performance with code-splitting, lazy-loaded sections and Uiverse-inspired UI components.',
+      image: '/assets/pictures/portfolio.jpg',
+      technologies: ['React.js', 'Tailwind CSS', 'Framer Motion', 'anime.js'],
       demoLink: 'https://chathukadilakshana.vercel.app/',
       githubLink: 'https://github.com/IT22091352/newportfolio',
-      category: 'frontend',
-      span: 'md:col-span-2 lg:col-span-3'
+      category: 'frontend'
+    },
+    {
+      title: 'Mobile Gaming App',
+      description: 'Interactive Android gaming app built with Kotlin, focusing on smooth gameplay and a modern view-binding UI.',
+      image: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?auto=format&fit=crop&w=1000&q=80',
+      technologies: ['Android Studio', 'Kotlin', 'UI/UX Design', 'View Binding'],
+      demoLink: 'https://github.com/IT22091352/Mobile-Gaming-App.git',
+      githubLink: 'https://github.com/IT22091352/Mobile-Gaming-App.git',
+      category: 'mobile'
     },
     {
       title: 'Smart Note App',
-      description: 'A user-friendly mobile application for creating, organizing, and managing notes, designed to boost productivity and simplify information management.',
-      image: 'https://images.unsplash.com/photo-1595675024853-0f3ec9098ac7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      technologies: ['Android Studio', 'Kotlin', 'Room Database', 'MVVM Architecture', 'Material Design'],
-      demoLink: 'https://www.linkedin.com/posts/chathuka-dilakshana-006315284_androiddev-kotlin-crudapp-activity-7206717409410396163-mL9a?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEUaFsYBrXMHT91mODYsNiwla3z6-ffHEXk',
+      description: 'Mobile app for creating, organizing and managing notes using Room, MVVM and Material Design.',
+      image: 'https://images.unsplash.com/photo-1595675024853-0f3ec9098ac7?auto=format&fit=crop&w=1000&q=80',
+      technologies: ['Android Studio', 'Kotlin', 'Room Database', 'MVVM', 'Material Design'],
+      demoLink: 'https://github.com/IT22091352/Smart-Note-MAD-app.git',
       githubLink: 'https://github.com/IT22091352/Smart-Note-MAD-app.git',
-      category: 'mobile',
-      span: 'md:col-span-1 lg:col-span-2'
-    },
-    {
-      title: 'Hotel Reservation Website',
-      description: 'A dynamic website designed to streamline hotel booking processes, offering features for browsing, selecting, and reserving accommodations with ease.',
-      image: 'https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaWQfGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80',
-      technologies: ['PHP', 'Java', 'MySQL', 'JavaScript', 'HTML/CSS', 'Bootstrap'],
-      demoLink: '/notfound',
-      githubLink: 'https://github.com/IT22091352/IT22091352-IT22091352-Hotel-Reservation-Website.git',
-      category: 'fullstack',
-      span: 'md:col-span-1 lg:col-span-2'
-    },
-    {
-      title: 'Online Book Hub',
-      description: 'BookHub, a web application designed to enhance the way we discover and explore books.',
-      image: 'https://media.istockphoto.com/id/1218656325/photo/laptop-with-online-library-realistic-3d-rendering.jpg?s=612x612&w=0&k=20&c=R9yd2DvnzDfmJvPEbpTznc89XwX7SD3k8kAeUU3UnMU=',
-      technologies: ['React', 'JavaScripts', 'MongoDB', 'NodeJs', 'HTML/CSS', 'Bootstrap', 'ExpressJs'],
-      demoLink: 'https://www.linkedin.com/posts/chathuka-dilakshana-006315284_reactjs-webdevelopment-googlebooksapi-activity-7280644380707713026-68y3?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEUaFsYBrXMHT91mODYsNiwla3z6-ffHEXk',
-      githubLink: 'https://github.com/IT22091352/library_management_system.git',
-      category: 'fullstack',
-      span: 'md:col-span-2 lg:col-span-3'
+      category: 'mobile'
     }
   ];
 
@@ -98,7 +137,7 @@ const Projects = () => {
   }));
 
   return (
-    <section id="projects" className="section-padding bg-slate-950 text-white">
+    <section id="projects" className="section-padding relative overflow-hidden bg-[#03070f] text-white">
       <div className="container">
         <motion.h2
           className="section-heading text-white"
@@ -116,7 +155,7 @@ const Projects = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          Selected builds where performance, visual detail, and usability come together.
+          AI/ML research, SaaS platforms and full-stack systems — shipped, deployed and measured.
         </motion.p>
 
         <motion.div
@@ -127,14 +166,14 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
         >
           <FilterBar
-            categories={['all', 'frontend', 'fullstack', 'mobile', 'data']}
+            categories={['all', 'frontend', 'fullstack', 'ai', 'mobile']}
             activeFilter={filter}
             onFilterChange={setFilter}
           />
         </motion.div>
 
         <motion.div
-          className="grid auto-rows-auto grid-cols-1 gap-5 md:auto-rows-[220px] md:grid-cols-3 lg:grid-cols-6 lg:auto-rows-[200px]"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
           layout
         >
           <AnimatePresence mode="popLayout">

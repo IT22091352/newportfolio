@@ -7,7 +7,7 @@ const ProjectCard = ({ project, index }) => {
   const cardRef = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -26,11 +26,7 @@ const ProjectCard = ({ project, index }) => {
     <motion.article
       ref={cardRef}
       layout
-      className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 h-full flex flex-col ${
-        project.featured
-          ? 'md:col-span-2 md:row-span-2 lg:col-span-4 lg:row-span-2'
-          : 'md:col-span-1 lg:col-span-2'
-      }`}
+      className={`uv-card group relative overflow-hidden rounded-2xl transition-all duration-300 h-full flex flex-col`}
       variants={{
         hidden: { opacity: 0, y: 20 },
         show: {
@@ -46,7 +42,7 @@ const ProjectCard = ({ project, index }) => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      onMouseMove={handleMouseMove}
+      onMouseMove={(e) => { handleMouseMove(e); const r = e.currentTarget.getBoundingClientRect(); e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`); e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`); }}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setIsHovered(true)}
       whileHover={{ y: -8 }}
@@ -91,10 +87,10 @@ const ProjectCard = ({ project, index }) => {
         }`}
       />
 
-      <div className={`relative grid h-full ${project.featured ? 'grid-rows-[1.2fr_0.8fr]' : 'grid-rows-[1fr_auto]'}`}>
+      <div className={`relative flex h-full flex-col`}>
         {/* Image Container with Interactive Buttons Overlay */}
         <motion.div
-          className={`relative overflow-hidden group/image aspect-[16/10] sm:aspect-[16/9] md:aspect-auto ${project.featured ? 'md:min-h-[300px]' : 'md:min-h-[200px]'}`}
+          className={`relative overflow-hidden group/image aspect-[16/9] w-full flex-shrink-0`}
           whileHover={isHovered ? { y: -4 } : {}}
         >
           <OptimizedResponsiveImage
@@ -184,72 +180,11 @@ const ProjectCard = ({ project, index }) => {
             <motion.h3 className="mb-2 text-lg font-bold text-white sm:text-xl lg:text-2xl line-clamp-2">
               {project.title}
             </motion.h3>
-            <motion.p className="text-xs leading-relaxed text-slate-300 sm:text-sm line-clamp-2">
+            <motion.p className="text-xs leading-relaxed text-slate-300 sm:text-sm line-clamp-3">
               {project.description}
             </motion.p>
 
-            {/* Expandable Full Description */}
-            <AnimatePresence>
-              {isExpanded && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="mt-3 overflow-hidden"
-                >
-                  <p className="text-xs leading-relaxed text-slate-400">
-                    {project.fullDescription || project.description}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
-
-          {/* Tech Stack Badges with Neon Borders */}
-          <motion.div
-            className="mt-4 flex flex-wrap gap-2"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            {project.technologies
-              .slice(0, project.featured ? 6 : 3)
-              .map((tech, idx) => (
-                <motion.span
-                  key={tech}
-                  className="rounded-full border border-cyan-400/40 bg-cyan-400/5 px-3 py-1 text-[10px] font-medium text-cyan-200 backdrop-blur-md hover:border-cyan-300/60 hover:bg-cyan-400/10 transition-all duration-200"
-                  whileHover={{ scale: 1.08, boxShadow: '0 0 12px rgba(34, 211, 238, 0.3)' }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.35 + idx * 0.05 }}
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            {project.technologies.length > (project.featured ? 6 : 3) && (
-              <span className="text-[10px] text-slate-400 self-center">
-                +{project.technologies.length - (project.featured ? 6 : 3)} tech
-              </span>
-            )}
-          </motion.div>
-
-          {/* Learn More & Action Buttons */}
-          <motion.div
-            className="mt-4 flex gap-2"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            <motion.button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="flex-1 px-3 py-2 rounded-lg text-xs font-semibold text-cyan-300 border border-cyan-400/40 bg-cyan-400/5 hover:bg-cyan-400/10 hover:border-cyan-300/60 transition-all duration-200"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {isExpanded ? 'Show Less' : 'Learn More'}
-            </motion.button>
-          </motion.div>
         </motion.div>
       </div>
     </motion.article>
