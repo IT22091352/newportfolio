@@ -4,15 +4,15 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { Suspense, lazy, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import WhatsAppFloat from './components/WhatsAppFloat';
 import NotFound from './components/NotFound';
 import PremiumBackground from './components/PremiumBackground';
 import { loadOptimizedGoogleFonts, setupDNSPrefetch, initEmailJS } from './config/externalServicesConfig';
 
 // Code-split heavy sections
+const LazyAbout = lazy(() => import('./components/About'));
+const LazyContact = lazy(() => import('./components/Contact'));
+const LazyFooter = lazy(() => import('./components/Footer'));
+const LazyWhatsAppFloat = lazy(() => import('./components/WhatsAppFloat'));
 const LazySkills = lazy(() => import('./components/Skills'));
 const LazyExperience = lazy(() => import('./components/Experience'));
 const LazyProjects = lazy(() => import('./components/Projects'));
@@ -76,7 +76,7 @@ const AppShell = () => {
                 <motion.main>
                   {/* Load Hero and About immediately (above fold) */}
                   <Hero />
-                  <About />
+                  <Suspense fallback={<LoadingFallback />}><LazyAbout /></Suspense>
                   
                   {/* Lazy-load heavy sections (only when scrolled into view) */}
                   <Suspense fallback={<LoadingFallback />}>
@@ -96,10 +96,10 @@ const AppShell = () => {
                   </Suspense>
                   
                   {/* Load Contact immediately (call to action) */}
-                  <Contact />
+                  <Suspense fallback={<LoadingFallback />}><LazyContact /></Suspense>
                 </motion.main>
-                <Footer />
-                <WhatsAppFloat />
+                <Suspense fallback={null}><LazyFooter /></Suspense>
+                <Suspense fallback={null}><LazyWhatsAppFloat /></Suspense>
               </motion.div>
             }
           />

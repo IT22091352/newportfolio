@@ -98,7 +98,7 @@ const ProjectCard = ({ project, index }) => {
             alt={project.title}
             width={960}
             height={540}
-            priority={index < 2 || project.title === 'Portfolio Website'}
+            priority={false}
             className="block h-full w-full object-cover"
           />
 

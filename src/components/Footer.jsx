@@ -65,7 +65,7 @@ const Footer = () => {
         >
           <p>© {currentYear} Chathuka Dilakshana. Crafted with care.</p>
           <MagneticButton className="inline-flex rounded-full">
-            <Link to="home" smooth={true} duration={600} offset={-90} className="cursor-pointer text-slate-800 transition-colors hover:text-cyan-700 dark:text-slate-200 dark:hover:text-cyan-300">Back to top</Link>
+            <Link to="home" href="#home" smooth={true} duration={600} offset={-90} className="cursor-pointer text-slate-800 transition-colors hover:text-cyan-700 dark:text-slate-200 dark:hover:text-cyan-300">Back to top</Link>
           </MagneticButton>
         </motion.div>
       </div>
